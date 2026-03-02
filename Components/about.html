@@ -1,0 +1,1422 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ashley Home · about</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- NAV / HERO / REVIEW CSS (unchanged) -->
+    <link rel="stylesheet" href="../assets/css/nav.css" />
+    <link rel="stylesheet" href="../assets/css/hero2.css" />
+    <link rel="stylesheet" href="../assets/css/hero.css" />
+    <link rel="stylesheet" href="../assets/css/review.css" />
+
+    <style>
+      /* ========== ORIGINAL STYLES (kept exactly, some may not be used but harmless) ========== */
+      .categories {
+        padding: 90px 8%;
+        background: #fff;
+        text-align: center;
+      }
+      .categories h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 2.6rem;
+        margin-bottom: 50px;
+      }
+      .category-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 30px;
+      }
+      .category-card {
+        position: relative;
+        height: 320px;
+        border-radius: 18px;
+        overflow: hidden;
+        cursor: pointer;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+      .category-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: 0.5s;
+      }
+      .category-card:hover img {
+        transform: scale(1.1);
+      }
+      .category-card span {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        color: #fff;
+        font-size: 1.4rem;
+        font-weight: 600;
+        text-shadow: 0 5px 20px rgba(0, 0, 0, 0.7);
+      }
+      .highlights {
+        padding: 90px 8%;
+        background: linear-gradient(135deg, #f3ede6, #faf8f6);
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        text-align: center;
+      }
+      .highlight-box {
+        padding: 40px;
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        transition: 0.3s;
+      }
+      .highlight-box:hover {
+        transform: translateY(-10px);
+      }
+      .highlight-box h3 {
+        font-family: "Playfair Display", serif;
+        margin-bottom: 15px;
+      }
+      .highlight-box p {
+        color: #666;
+      }
+      .cta {
+        padding: 120px 8%;
+        background:
+          linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)),
+          url("https://images.unsplash.com/photo-1618221195710-dd6b41faaea6")
+            center/cover no-repeat;
+        text-align: center;
+        color: #fff;
+      }
+      .cta h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 3rem;
+        margin-bottom: 20px;
+      }
+      .cta a {
+        display: inline-block;
+        margin-top: 30px;
+        padding: 14px 42px;
+        background: #e7cfa7;
+        color: #2c2c2c;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 30px;
+        transition: 0.3s;
+      }
+      .cta a:hover {
+        background: #d8b98c;
+      }
+      footer {
+        background: #1c1c1c;
+        color: #bbb;
+        padding: 50px 8%;
+        text-align: center;
+      }
+      footer span {
+        color: #e7cfa7;
+      }
+      @media (max-width: 900px) {
+        .about {
+          grid-template-columns: 1fr;
+        }
+        .hero h1 {
+          font-size: 3rem;
+        }
+      }
+
+      /* ========== ABOUT PAGE CORE (already present) ========== */
+      .about-page {
+        padding: 100px 8% 40px;
+        background: #faf8f6;
+      }
+      .about-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+      .about-text h1 {
+        font-family: "Playfair Display", serif;
+        font-size: 3.2rem;
+        font-weight: 700;
+        color: #2c2c2c;
+        margin-bottom: 30px;
+        line-height: 1.2;
+      }
+      .about-text h1 span {
+        color: #b79b6e;
+        border-bottom: 3px solid #e7cfa7;
+        padding-bottom: 5px;
+      }
+      .about-text p {
+        font-family: "Poppins", sans-serif;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #4a4a4a;
+        margin-bottom: 25px;
+      }
+      .about-text .signature {
+        font-family: "Playfair Display", serif;
+        font-size: 1.4rem;
+        color: #8b6f4c;
+        margin-top: 30px;
+        font-style: italic;
+      }
+      .about-image {
+        position: relative;
+        border-radius: 30px;
+        overflow: hidden;
+        box-shadow: 0 30px 50px rgba(0, 0, 0, 0.2);
+        height: 500px;
+      }
+      .about-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+      }
+      .about-image:hover img {
+        transform: scale(1.03);
+      }
+      .values-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+        margin-top: 70px;
+      }
+      .value-item {
+        text-align: center;
+        padding: 30px 20px;
+        background: white;
+        border-radius: 24px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s;
+      }
+      .value-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+      .value-icon {
+        font-size: 2.8rem;
+        margin-bottom: 15px;
+      }
+      .value-item h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+        color: #2c2c2c;
+      }
+      .value-item p {
+        font-family: "Poppins", sans-serif;
+        font-size: 0.95rem;
+        color: #666;
+      }
+
+      /* ========== EXISTING ANIMATED SECTIONS (preserved) ========== */
+      /* ----- Philosophy (floating animation) ----- */
+      .philosophy-section {
+        padding: 100px 8%;
+        background: #fff;
+        overflow: hidden;
+      }
+      .philosophy-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        align-items: center;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+      .philosophy-text h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 2.8rem;
+        color: #2c2c2c;
+        margin-bottom: 25px;
+      }
+      .philosophy-text p {
+        font-family: "Poppins", sans-serif;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #555;
+      }
+      .philosophy-image {
+        position: relative;
+        border-radius: 40px;
+        overflow: hidden;
+        box-shadow: 0 40px 60px rgba(0, 0, 0, 0.1);
+        animation: float 6s ease-in-out infinite;
+      }
+      @keyframes float {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+      .philosophy-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.6s;
+      }
+      .philosophy-image:hover img {
+        transform: scale(1.02);
+      }
+
+      /* ----- Timeline (interactive) ----- */
+      .timeline-section {
+        padding: 100px 8%;
+        background: linear-gradient(145deg, #f3ede6 0%, #fcf9f5 100%);
+      }
+      .timeline-title {
+        font-family: "Playfair Display", serif;
+        font-size: 2.8rem;
+        text-align: center;
+        margin-bottom: 70px;
+        color: #2c2c2c;
+      }
+      .timeline {
+        max-width: 1100px;
+        margin: 0 auto;
+        position: relative;
+      }
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        width: 2px;
+        height: 100%;
+        background: #d8b98c;
+        transform: translateX(-50%);
+      }
+      .timeline-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 60px;
+        position: relative;
+      }
+      .timeline-item:nth-child(even) {
+        flex-direction: row-reverse;
+      }
+      .timeline-content {
+        width: 45%;
+        background: white;
+        padding: 30px;
+        border-radius: 30px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+        transition: all 0.4s;
+        position: relative;
+        cursor: pointer;
+      }
+      .timeline-content:hover {
+        transform: scale(1.05) translateY(-5px);
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        background: #fffcf5;
+      }
+      .timeline-year {
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
+        font-weight: 700;
+        color: #b79b6e;
+        margin-bottom: 10px;
+      }
+      .timeline-content h3 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        font-family: "Playfair Display", serif;
+      }
+      .timeline-content p {
+        font-family: "Poppins", sans-serif;
+        color: #666;
+      }
+      .timeline-dot {
+        width: 20px;
+        height: 20px;
+        background: #e7cfa7;
+        border: 4px solid white;
+        border-radius: 50%;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        box-shadow: 0 0 0 3px #d8b98c;
+        transition: 0.3s;
+        z-index: 2;
+      }
+      .timeline-item:hover .timeline-dot {
+        background: #b79b6e;
+        box-shadow: 0 0 0 6px #e7cfa7;
+      }
+
+      /* ----- Artisan cards (3D hover) ----- */
+      .artisan-section {
+        padding: 100px 8%;
+        background: #fff;
+      }
+      .artisan-title {
+        font-family: "Playfair Display", serif;
+        font-size: 2.8rem;
+        text-align: center;
+        margin-bottom: 50px;
+        color: #2c2c2c;
+      }
+      .artisan-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 40px;
+        max-width: 1300px;
+        margin: 0 auto;
+      }
+      .artisan-card {
+        background: #fcf9f5;
+        border-radius: 30px;
+        padding: 30px 20px;
+        text-align: center;
+        transition: all 0.4s;
+        transform-style: preserve-3d;
+        perspective: 1000px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        cursor: default;
+      }
+      .artisan-card:hover {
+        transform: rotateY(4deg) rotateX(2deg) scale(1.02);
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+      }
+      .artisan-img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 0 auto 20px;
+        border: 5px solid #e7cfa7;
+        transition: 0.4s;
+      }
+      .artisan-card:hover .artisan-img {
+        border-color: #b79b6e;
+        transform: scale(1.05);
+      }
+      .artisan-card h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.6rem;
+        margin-bottom: 5px;
+      }
+      .artisan-card .role {
+        font-family: "Poppins", sans-serif;
+        color: #b79b6e;
+        font-weight: 500;
+        margin-bottom: 15px;
+      }
+      .artisan-card p {
+        font-family: "Poppins", sans-serif;
+        color: #555;
+        font-size: 0.95rem;
+      }
+
+      /* ----- Stats (counters with animation) ----- */
+      .stats-section {
+        padding: 80px 8%;
+        background: #2c2c2c;
+        color: white;
+        text-align: center;
+      }
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .stat-item {
+        padding: 20px;
+      }
+      .stat-number {
+        font-family: "Playfair Display", serif;
+        font-size: 4rem;
+        font-weight: 700;
+        color: #e7cfa7;
+        margin-bottom: 10px;
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.6s,
+          transform 0.6s;
+      }
+      .stat-number.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .stat-label {
+        font-family: "Poppins", sans-serif;
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+      }
+
+      /* ----- Promise / commitment (cards with pulse) ----- */
+      .promise-section {
+        padding: 100px 8%;
+        background: #faf8f6;
+      }
+      .promise-title {
+        font-family: "Playfair Display", serif;
+        font-size: 2.8rem;
+        text-align: center;
+        margin-bottom: 60px;
+      }
+      .promise-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .promise-card {
+        background: white;
+        padding: 40px 30px;
+        border-radius: 40px;
+        text-align: center;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+        transition: 0.4s;
+        animation: softPulse 4s infinite;
+      }
+      .promise-card:hover {
+        transform: translateY(-15px);
+        box-shadow: 0 30px 50px rgba(0, 0, 0, 0.15);
+        animation: none;
+      }
+      @keyframes softPulse {
+        0% {
+          box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+        }
+        50% {
+          box-shadow: 0 25px 45px rgba(183, 155, 110, 0.2);
+        }
+        100% {
+          box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+        }
+      }
+      .promise-icon {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+      }
+      .promise-card h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+      }
+      .promise-card p {
+        font-family: "Poppins", sans-serif;
+        color: #666;
+      }
+
+      /* ========== NEW CREATIVE SECTIONS (non‑card / mixed) ========== */
+
+      /* ----- 1. Featured Collection (mosaic with overlay, no cards) ----- */
+      .featured-collection {
+        padding: 100px 8%;
+        background: #ffffff;
+      }
+      .collection-title {
+        font-family: "Playfair Display", serif;
+        font-size: 2.8rem;
+        text-align: center;
+        margin-bottom: 60px;
+        color: #2c2c2c;
+      }
+      .mosaic-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        grid-auto-rows: 280px;
+        gap: 20px;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+      .mosaic-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 24px;
+        box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+      }
+      .mosaic-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s;
+      }
+      .mosaic-item:hover img {
+        transform: scale(1.08);
+      }
+      .mosaic-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+        color: white;
+        padding: 30px 20px 20px;
+        transform: translateY(30px);
+        opacity: 0;
+        transition: all 0.4s;
+      }
+      .mosaic-item:hover .mosaic-overlay {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      .mosaic-overlay h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.6rem;
+        margin-bottom: 5px;
+      }
+      .mosaic-overlay p {
+        font-family: "Poppins", sans-serif;
+        font-size: 0.95rem;
+        opacity: 0.9;
+      }
+      .mosaic-item:nth-child(1) {
+        grid-column: span 1;
+        grid-row: span 2;
+      }
+      .mosaic-item:nth-child(2) {
+        grid-column: span 1;
+      }
+      .mosaic-item:nth-child(3) {
+        grid-column: span 1;
+      }
+      .mosaic-item:nth-child(4) {
+        grid-column: span 2;
+      }
+
+      /* ----- 2. Sustainability Journey (circular meters & list, no cards) ----- */
+      .sustainability-section {
+        padding: 100px 8%;
+        background: #f3ede6;
+      }
+      .sustain-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 60px;
+        align-items: center;
+        max-width: 1300px;
+        margin: 0 auto;
+      }
+      .sustain-left {
+        flex: 1 1 300px;
+      }
+      .sustain-left h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 2.8rem;
+        color: #2c2c2c;
+        margin-bottom: 30px;
+      }
+      .sustain-left p {
+        font-family: "Poppins", sans-serif;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #4a4a4a;
+        margin-bottom: 25px;
+      }
+      .progress-list {
+        list-style: none;
+        padding: 0;
+      }
+      .progress-item {
+        margin-bottom: 25px;
+      }
+      .progress-label {
+        display: flex;
+        justify-content: space-between;
+        font-family: "Poppins", sans-serif;
+        font-weight: 500;
+        color: #2c2c2c;
+        margin-bottom: 8px;
+      }
+      .progress-bar-bg {
+        height: 10px;
+        background: #ddd;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .progress-fill {
+        height: 100%;
+        background: #b79b6e;
+        width: 0%;
+        border-radius: 10px;
+        transition: width 1.2s ease;
+      }
+      .sustain-right {
+        flex: 1 1 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .circular-meter {
+        width: 280px;
+        height: 280px;
+        position: relative;
+      }
+      .circular-meter svg {
+        width: 100%;
+        height: 100%;
+        transform: rotate(-90deg);
+      }
+      .circle-bg {
+        stroke: #e0d6cc;
+        stroke-width: 12;
+        fill: none;
+      }
+      .circle-progress {
+        stroke: #b79b6e;
+        stroke-width: 12;
+        fill: none;
+        stroke-dasharray: 565.48; /* 2*pi*90 */
+        stroke-dashoffset: 565.48;
+        transition: stroke-dashoffset 1.5s;
+      }
+      .meter-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
+        font-weight: 700;
+        color: #2c2c2c;
+      }
+      .meter-text small {
+        font-size: 1rem;
+        font-family: "Poppins", sans-serif;
+        display: block;
+        color: #b79b6e;
+      }
+
+      /* ----- 3. Testimonial Carousel (full‑width quote, no cards) ----- */
+      .testimonial-section {
+        padding: 100px 8%;
+        background: #fff;
+        text-align: center;
+      }
+      .testimonial-title {
+        font-family: "Playfair Display", serif;
+        font-size: 2.8rem;
+        margin-bottom: 40px;
+        color: #2c2c2c;
+      }
+      .testimonial-quote {
+        max-width: 900px;
+        margin: 0 auto 40px;
+        position: relative;
+      }
+      .quote-icon {
+        font-size: 5rem;
+        color: #e7cfa7;
+        line-height: 1;
+        margin-bottom: -20px;
+      }
+      .quote-text {
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
+        font-style: italic;
+        color: #333;
+        line-height: 1.5;
+        margin-bottom: 30px;
+      }
+      .quote-author {
+        font-family: "Poppins", sans-serif;
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: #b79b6e;
+      }
+      .author-title {
+        font-family: "Poppins", sans-serif;
+        font-size: 0.9rem;
+        color: #888;
+      }
+      .carousel-dots {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 40px;
+      }
+      .carousel-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #ccc;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .carousel-dot.active {
+        background: #b79b6e;
+        transform: scale(1.3);
+      }
+
+      /* responsive for new sections (original) */
+      @media (max-width: 900px) {
+        .mosaic-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .mosaic-item:nth-child(1) {
+          grid-row: span 1;
+        }
+        .mosaic-item:nth-child(4) {
+          grid-column: span 1;
+        }
+        .sustain-container {
+          flex-direction: column;
+        }
+      }
+      @media (max-width: 600px) {
+        .mosaic-grid {
+          grid-template-columns: 1fr;
+        }
+        .quote-text {
+          font-size: 1.5rem;
+        }
+      }
+
+      /* ========== ADDITIONAL RESPONSIVE IMPROVEMENTS (for all devices) ========== */
+      @media (max-width: 900px) {
+        .about-container {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+        .about-image {
+          height: 400px;
+        }
+        .values-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .philosophy-grid {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+        .timeline::before {
+          left: 30px;
+        }
+        .timeline-item {
+          flex-direction: column !important;
+          align-items: flex-start;
+          margin-left: 60px;
+        }
+        .timeline-content {
+          width: 100%;
+          margin-bottom: 20px;
+        }
+        .timeline-dot {
+          left: 30px;
+          transform: translateX(-50%);
+        }
+        .promise-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 600px) {
+        .about-text h1 {
+          font-size: 2.5rem;
+        }
+        .values-grid {
+          grid-template-columns: 1fr;
+        }
+        .timeline-content {
+          padding: 20px;
+        }
+        .timeline-year {
+          font-size: 1.5rem;
+        }
+        .artisan-card {
+          padding: 20px;
+        }
+        .stats-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+        .promise-grid {
+          grid-template-columns: 1fr;
+        }
+        .mosaic-grid {
+          grid-template-columns: 1fr;
+          grid-auto-rows: auto;
+        }
+        .mosaic-item {
+          height: 250px;
+        }
+        .mosaic-item:nth-child(1) {
+          grid-row: auto;
+        }
+        .testimonial-quote .quote-text {
+          font-size: 1.5rem;
+        }
+        footer {
+          padding: 30px 5%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ========== NAVBAR (unchanged, onclick removed) ========== -->
+    <nav class="navbar">
+      <div class="logo">
+        <!-- SVG crown logo as image (inline SVG) – now larger -->
+        <img src="../assets/Images/Ashley logo.png" alt="Ashley Crown Logo" />
+      </div>
+
+      <div class="menu-toggle" id="menuToggle">☰</div>
+
+      <div class="nav-links" id="navLinks">
+        <a href="../Components/index.html">Home</a>
+        <a href="../Components/about.html">About</a>
+
+        <div class="dropdown">
+          <a href="../Components/Bedding/Bedding.html">Bedding</a>
+          <div class="dropdown-menu">
+            <a href="../Components/Bedding/Bedsheet.html">Bed Sheets</a>
+            <a href="../Components/Bedding/Bed Covers.html">Bed Covers</a>
+            <a href="../Components/Bedding/Blankets.html">Blankets</a>
+            <a href="../Components/Bedding/Dohars.html">Dohars</a>
+            <a href="../Components/Bedding/Pillows.html">Pillows</a>
+            <a href="../Components/Bedding/Pillows Covers.html"
+              >Pillows Covers</a
+            >
+            <a href="../Components/Bedding/Quilts.html">Quilts</a>
+            <a href="../Components/Bedding/Mattress Guards.html"
+              >Mattress Guards</a
+            >
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <a href="../Components/Bath/bath.html">Bath</a>
+          <div class="dropdown-menu">
+            <a href="../Components/Bath/Towels.html">Towels</a>
+            <a href="../Components/Bath/Face Towels.html">Face Towels</a>
+            <a href="../Components/Bath/Hand Towels.html">Hand Towels</a>
+            <a href="../Components/Bath/Bath Mats.html">Bath Mats</a>
+            <a href="../Components/Bath/Bath Robes.html">Bath Robes</a>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <a href="../Components/Living/Living.html">Living</a>
+          <div class="dropdown-menu">
+            <a href="../Components/Living/Curtains.html">Curtains</a>
+            <a href="../Components/Living/Carpets.html">Carpets</a>
+            <a href="../Components/Living/Cushion Covers.html"
+              >Cushion Covers</a
+            >
+            <a href="../Components/Living/Cushion Fillers.html"
+              >Cushion Fillers</a
+            >
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <a href="../Components/Home Accessories/Accessories.html">Home Accessories</a>
+          <div class="dropdown-menu">
+            <a href="../Components/Home Accessories/Dining Accessories.html"
+              >Dining Accessories</a
+            >
+            <a href="../Components/Home Accessories/Kids Range.html"
+              >Kids Range</a
+            >
+            <a href="../Components/Home Accessories/Decor Items.html"
+              >Decor Items</a
+            >
+          </div>
+        </div>
+
+        <a href="../Components/contact.html">Contact</a>
+      </div>
+
+      <a href="../Components/contact.html" class="nav-btn">VISIT STORE</a>
+    </nav>
+
+    <!-- ========== HERO (exactly unchanged) ========== -->
+    <section class="minimalist-interior">
+      <div class="mi-layout">
+        <div class="brown-margin">
+          <div class="lines"><span></span><span></span><span></span></div>
+        </div>
+        <div class="section">
+          <div class="frame">
+            <div class="inner">
+              <img
+                src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=2158&auto=format&fit=crop"
+                alt="Minimalist interior"
+              />
+            </div>
+            <div class="logo">
+              <div class="mark">P.</div>
+              <span>PATRIOT<br />RENOVATION</span>
+            </div>
+            <div class="arrow" title="discover more">↙</div>
+            <div class="handle">@patriotrenovation_uae</div>
+          </div>
+        </div>
+        <div class="side-text">
+          <h1>Scandinavian<br />Design</h1>
+          <p>
+            Clean lines, neutral tones and natural textures come together to
+            create calm, timeless interiors inspired by Nordic living.
+          </p>
+          <div class="dots">
+            <span class="active"></span><span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== ORIGINAL ABOUT CONTENT ========== -->
+    <section class="about-page">
+      <div class="about-container">
+        <div class="about-text">
+          <h1>Where <span>craftsmanship</span><br />meets comfort</h1>
+          <p>
+            Founded in 2012, Ashley Home Decors began with a simple belief: your
+            home should tell your story. Every texture, every thread, every
+            piece we curate is chosen to bring warmth and authenticity to your
+            living spaces.
+          </p>
+          <p>
+            We travel across the globe to source the finest natural fabrics —
+            from Portuguese linen to Egyptian cotton — and collaborate with
+            artisans who value tradition as much as innovation. Our
+            Scandinavian-inspired aesthetic embraces minimalism without
+            sacrificing soul.
+          </p>
+          <p>
+            Today, Ashley Home is trusted by thousands of families who seek
+            elegance that lasts. We’re not just selling home textiles; we’re
+            helping you create a sanctuary.
+          </p>
+          <div class="signature">— Elena Ashley, founder</div>
+        </div>
+        <div class="about-image">
+          <img
+            src="https://images.unsplash.com/photo-1600210492493-0946911123ea?q=80&w=1974&auto=format&fit=crop"
+            alt="Elegant living room"
+          />
+        </div>
+      </div>
+      <div class="values-grid">
+        <div class="value-item">
+          <div class="value-icon">🌱</div>
+          <h3>Natural materials</h3>
+          <p>Organic cotton, linen, responsibly sourced.</p>
+        </div>
+        <div class="value-item">
+          <div class="value-icon">🤲</div>
+          <h3>Artisanal touch</h3>
+          <p>Hand-finished details, unique perfection.</p>
+        </div>
+        <div class="value-item">
+          <div class="value-icon">⏳</div>
+          <h3>Timeless design</h3>
+          <p>Neutral palettes, clean lines, cherished for years.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== EXISTING ANIMATED SECTIONS ========== -->
+    <!-- Philosophy -->
+    <section class="philosophy-section">
+      <div class="philosophy-grid">
+        <div class="philosophy-text">
+          <h2>Less, but better — the Nordic way</h2>
+          <p>
+            We believe every object in your home should earn its place. That’s
+            why we strip away the superfluous and focus on quality, texture, and
+            honesty of materials. Our designs breathe, age gracefully, and never
+            shout for attention.
+          </p>
+          <p>
+            Inspired by the long, dark winters of Scandinavia, we create warmth
+            through layering, softness, and the subtle interplay of natural
+            light. It’s minimalism that feels human.
+          </p>
+        </div>
+        <div class="philosophy-image">
+          <img
+            src="https://images.unsplash.com/photo-1618221381711-42ca8ab6e908?q=80&w=1974&auto=format&fit=crop"
+            alt="Minimalist bedroom"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="timeline-section">
+      <h2 class="timeline-title">Our journey</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <div class="timeline-year">2012</div>
+            <h3>First studio</h3>
+            <p>
+              Elena starts Ashley Home in a small Copenhagen studio, designing
+              linen collections for friends.
+            </p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <div class="timeline-year">2016</div>
+            <h3>Flagship store</h3>
+            <p>
+              First physical store opens in Stockholm – a minimalist space that
+              becomes a local favourite.
+            </p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <div class="timeline-year">2020</div>
+            <h3>Global reach</h3>
+            <p>
+              Online store ships worldwide. Collaboration with Portuguese
+              artisans begins.
+            </p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <div class="timeline-year">2026</div>
+            <h3>Sustainability pledge</h3>
+            <p>
+              100% organic cotton and plastic‑free packaging – our promise to
+              the planet.
+            </p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Artisan cards (cards) -->
+    <section class="artisan-section">
+      <h2 class="artisan-title">Hands behind the weaves</h2>
+      <div class="artisan-grid">
+        <div class="artisan-card">
+          <img
+            class="artisan-img"
+            src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?q=80&w=2069&auto=format&fit=crop"
+            alt="artisan"
+          />
+          <h3>Lena Kotka</h3>
+          <div class="role">master weaver, Finland</div>
+          <p>
+            Fourth‑generation weaver who brings traditional Finnish patterns
+            into contemporary collections.
+          </p>
+        </div>
+        <div class="artisan-card">
+          <img
+            class="artisan-img"
+            src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?q=80&w=2070&auto=format&fit=crop"
+            alt="artisan"
+          />
+          <h3>Ravi Shankar</h3>
+          <div class="role">textile dyer, India</div>
+          <p>
+            Natural dye expert, working with indigo and pomegranate to create
+            our signature muted palette.
+          </p>
+        </div>
+        <div class="artisan-card">
+          <img
+            class="artisan-img"
+            src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop"
+            alt="artisan"
+          />
+          <h3>Marta Johansen</h3>
+          <div class="role">design lead, Denmark</div>
+          <p>
+            Architect turned textile designer, she sculpts space using fabric
+            and light.
+          </p>
+        </div>
+        <div class="artisan-card">
+          <img
+            class="artisan-img"
+            src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=1974&auto=format&fit=crop"
+            alt="artisan"
+          />
+          <h3>Carlos Mota</h3>
+          <div class="role">linen specialist, Portugal</div>
+          <p>
+            Oversees the spinning and weaving of our European flax, ensuring
+            heirloom quality.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats-section" id="stats">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number" id="stat1" data-target="14">0</div>
+          <div class="stat-label">years of passion</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" id="stat2" data-target="38">0</div>
+          <div class="stat-label">artisan partners</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" id="stat3" data-target="45">0</div>
+          <div class="stat-label">countries reached</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Promise cards (cards) -->
+    <section class="promise-section">
+      <h2 class="promise-title">Our promise</h2>
+      <div class="promise-grid">
+        <div class="promise-card">
+          <div class="promise-icon">🌿</div>
+          <h3>Climate neutral</h3>
+          <p>
+            By 2025 we’ll be climate positive – every product gives back to the
+            planet.
+          </p>
+        </div>
+        <div class="promise-card">
+          <div class="promise-icon">🧺</div>
+          <h3>Lifelong comfort</h3>
+          <p>
+            If it frays, fades or fails, we repair or replace – no questions
+            asked.
+          </p>
+        </div>
+        <div class="promise-card">
+          <div class="promise-icon">🤝</div>
+          <h3>Fair & square</h3>
+          <p>
+            Every artisan earns a premium wage, and we maintain full
+            supply‑chain transparency.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== NEW CREATIVE SECTIONS (no cards / different structure) ========== -->
+    <!-- 1. Featured Collection (mosaic overlay) -->
+    <section class="featured-collection">
+      <h2 class="collection-title">Timeless pieces</h2>
+      <div class="mosaic-grid">
+        <div class="mosaic-item">
+          <img
+            src="https://images.unsplash.com/photo-1505693314120-0d443867891c?q=80&w=2071&auto=format&fit=crop"
+            alt="Linen bedding"
+          />
+          <div class="mosaic-overlay">
+            <h3>Linen collection</h3>
+            <p>Hand‑finished, stone‑washed for softness</p>
+          </div>
+        </div>
+        <div class="mosaic-item">
+          <img
+            src="https://images.unsplash.com/photo-1584102272778-5f6d4508a2d5?q=80&w=1974&auto=format&fit=crop"
+            alt="Bath towels"
+          />
+          <div class="mosaic-overlay">
+            <h3>Bath rituals</h3>
+            <p>Egyptian cotton, zero‑twist loops</p>
+          </div>
+        </div>
+        <div class="mosaic-item">
+          <img
+            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop"
+            alt="Living room"
+          />
+          <div class="mosaic-overlay">
+            <h3>Living textures</h3>
+            <p>Wool blends & natural dyes</p>
+          </div>
+        </div>
+        <div class="mosaic-item">
+          <img
+            src="https://images.unsplash.com/photo-1604578762246-41134e37f9cc?q=80&w=1974&auto=format&fit=crop"
+            alt="Accessories"
+          />
+          <div class="mosaic-overlay">
+            <h3>Ceramics & more</h3>
+            <p>Hand‑thrown stoneware</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Sustainability Journey (circular meter + progress bars) -->
+    <section class="sustainability-section">
+      <div class="sustain-container">
+        <div class="sustain-left">
+          <h2>Weaving a better future</h2>
+          <p>
+            Our 2030 roadmap is rooted in transparency. We measure every step,
+            from flax field to your bedroom.
+          </p>
+          <ul class="progress-list">
+            <li class="progress-item">
+              <div class="progress-label">
+                <span>Organic cotton</span><span>94%</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-fill" style="width: 94%"></div>
+              </div>
+            </li>
+            <li class="progress-item">
+              <div class="progress-label">
+                <span>Plastic‑free packaging</span><span>78%</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-fill" style="width: 78%"></div>
+              </div>
+            </li>
+            <li class="progress-item">
+              <div class="progress-label">
+                <span>Renewable energy</span><span>62%</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-fill" style="width: 62%"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="sustain-right">
+          <div class="circular-meter" id="meter">
+            <svg viewBox="0 0 200 200">
+              <circle class="circle-bg" cx="100" cy="100" r="90"></circle>
+              <circle
+                class="circle-progress"
+                cx="100"
+                cy="100"
+                r="90"
+                id="progressCircle"
+                stroke-dashoffset="0"
+              ></circle>
+            </svg>
+            <div class="meter-text">78%<small>circular</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Testimonial (full‑width quote, no cards) -->
+    <section class="testimonial-section">
+      <h2 class="testimonial-title">Kind words</h2>
+      <div class="testimonial-quote">
+        <div class="quote-icon">❝</div>
+        <div class="quote-text">
+          Ashley Home doesn’t just sell linen — they sell the feeling of a slow
+          Sunday morning.
+        </div>
+        <div class="quote-author">Clara Lindström</div>
+        <div class="author-title">Architect, Stockholm</div>
+      </div>
+      <div class="carousel-dots">
+        <span class="carousel-dot active"></span>
+        <span class="carousel-dot"></span>
+        <span class="carousel-dot"></span>
+      </div>
+    </section>
+
+    <!-- ========== FOOTER (unchanged) ========== -->
+    <footer>
+      © 2026 <span>Ashley Home Decors</span>. All Rights Reserved.
+    </footer>
+
+    <!-- external nav.js (handles menu toggle & dropdown) -->
+    <script src="../assets/js/nav.js"></script>
+    <!-- remaining non‑nav animations (stats, timeline, meter) -->
+    <script>
+      (function () {
+        // stats counters (unchanged)
+        const statNumbers = document.querySelectorAll(".stat-number");
+        if (statNumbers.length) {
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  const el = entry.target;
+                  el.classList.add("visible");
+                  const target = parseInt(el.getAttribute("data-target"), 10);
+                  if (!isNaN(target) && el.innerText == "0") {
+                    let current = 0;
+                    const increment = target / 50;
+                    const timer = setInterval(() => {
+                      current += increment;
+                      if (current >= target) {
+                        el.innerText = target;
+                        clearInterval(timer);
+                      } else {
+                        el.innerText = Math.floor(current);
+                      }
+                    }, 20);
+                  }
+                  observer.unobserve(el);
+                }
+              });
+            },
+            { threshold: 0.3 },
+          );
+          statNumbers.forEach((stat) => observer.observe(stat));
+        }
+
+        // timeline reveal
+        const timelineContents = document.querySelectorAll(".timeline-content");
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+              }
+            });
+          },
+          { threshold: 0.2 },
+        );
+        timelineContents.forEach((c) => {
+          c.style.opacity = "0";
+          c.style.transform = "translateY(30px)";
+          c.style.transition = "opacity 0.7s, transform 0.7s";
+          revealObserver.observe(c);
+        });
+
+        // circular meter animation
+        const meterSection = document.querySelector(".sustainability-section");
+        const circle = document.getElementById("progressCircle");
+        if (circle && meterSection) {
+          const meterObserver = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  // 78% dashoffset: circumference = 2*pi*90 ≈ 565.48 ; offset for 78% = 565.48 * (1-0.78) = 124.4
+                  circle.style.strokeDashoffset = "124.4";
+                  meterObserver.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.3 },
+          );
+          meterObserver.observe(meterSection);
+        }
+      })();
+    </script>
+  </body>
+</html>

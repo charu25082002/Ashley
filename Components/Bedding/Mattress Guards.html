@@ -1,0 +1,1011 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ashley Home · Bed Covers Collection (with filters)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- NAV CSS (unchanged, external) -->
+    <link rel="stylesheet" href="../../assets/css/nav.css" />
+    <!-- hero.css (kept for compatibility) -->
+    <link rel="stylesheet" href="../assets/css/hero.css" />
+
+    <style>
+      /* ========== BASE ========== */
+      body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        background: #faf8f6;
+        color: #2c2c2c;
+        overflow-x: hidden;
+      }
+
+      /* subtle grain texture */
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("https://www.transparenttextures.com/colors/light/linen.png");
+        opacity: 0.03;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      /* ========== FIX HERO HIDING BEHIND NAVBAR ========== */
+      .bedcovers-hero {
+        margin-top: 80px;
+      }
+
+      /* ========== BED COVERS HERO ========== */
+      .bedcovers-hero {
+        height: 50vh;
+        min-height: 350px;
+        background:
+          linear-gradient(95deg, #2b2b2b 0%, #5b4e44 100%),
+          url("https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=2158&auto=format&fit=crop");
+        background-size: cover;
+        background-blend-mode: overlay;
+        background-position: center 30%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        position: relative;
+        animation: heroGlow 8s infinite alternate;
+      }
+      @keyframes heroGlow {
+        0% {
+          box-shadow: inset 0 0 30px rgba(231, 207, 167, 0.2);
+        }
+        100% {
+          box-shadow: inset 0 0 60px rgba(231, 207, 167, 0.6);
+        }
+      }
+      .bedcovers-hero::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 50px;
+        background: linear-gradient(to top, #faf8f6, transparent);
+      }
+      .hero-content h1 {
+        font-family: "Playfair Display", serif;
+        font-size: 4rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+        text-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        animation: slideUp 1s ease-out;
+      }
+      .hero-content p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        animation: slideUp 1s 0.1s ease-out backwards;
+      }
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ========== PRODUCT SECTION ========== */
+      .product-section {
+        padding: 80px 8% 100px;
+        background: #faf8f6;
+        position: relative;
+        z-index: 2;
+      }
+      .section-title {
+        font-family: "Playfair Display", serif;
+        font-size: 2.8rem;
+        text-align: center;
+        margin-bottom: 20px;
+        color: #2c2c2c;
+        animation: fadeIn 1s;
+      }
+      .section-sub {
+        text-align: center;
+        color: #6b5e54;
+        margin-bottom: 60px;
+        font-size: 1.1rem;
+        animation: fadeIn 1s 0.1s backwards;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      /* filter bar (interactive) */
+      .filter-bar {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-bottom: 50px;
+      }
+      .filter-tag {
+        background: #f1ebe5;
+        padding: 8px 25px;
+        border-radius: 40px;
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: #2c2c2c;
+        cursor: pointer;
+        transition: 0.3s;
+        border: 1px solid transparent;
+        position: relative;
+        overflow: hidden;
+      }
+      .filter-tag::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(231, 207, 167, 0.4);
+        transform: translate(-50%, -50%);
+        transition:
+          width 0.4s,
+          height 0.4s;
+        z-index: 0;
+      }
+      .filter-tag:hover::before {
+        width: 200px;
+        height: 200px;
+      }
+      .filter-tag:hover,
+      .filter-tag.active {
+        background: #e7cfa7;
+        border-color: #c6a679;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+      }
+      .filter-tag span {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* ========== PRODUCT GRID – INNOVATIVE CARDS (no price) ========== */
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 35px;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .product-card {
+        background: #fff;
+        border-radius: 30px;
+        overflow: hidden;
+        box-shadow: 0 20px 35px rgba(0, 0, 0, 0.05);
+        transition: all 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid rgba(0, 0, 0, 0.02);
+        animation: cardEntrance 0.8s ease backwards;
+        transform-origin: center;
+        cursor: pointer;
+      }
+      .product-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 30px;
+        padding: 2px;
+        background: linear-gradient(135deg, #e7cfa7, transparent 50%, #e7cfa7);
+        -webkit-mask:
+          linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 0;
+        transition: opacity 0.4s;
+        pointer-events: none;
+      }
+      .product-card:hover::after {
+        opacity: 0.6;
+      }
+
+      .product-card:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .product-card:nth-child(2) {
+        animation-delay: 0.15s;
+      }
+      .product-card:nth-child(3) {
+        animation-delay: 0.2s;
+      }
+      .product-card:nth-child(4) {
+        animation-delay: 0.25s;
+      }
+      .product-card:nth-child(5) {
+        animation-delay: 0.3s;
+      }
+      .product-card:nth-child(6) {
+        animation-delay: 0.35s;
+      }
+      .product-card:nth-child(7) {
+        animation-delay: 0.4s;
+      }
+      .product-card:nth-child(8) {
+        animation-delay: 0.45s;
+      }
+
+      @keyframes cardEntrance {
+        0% {
+          opacity: 0;
+          transform: scale(0.95) translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+      }
+
+      .product-card:hover {
+        transform: translateY(-18px) scale(1.02) rotate(0.5deg);
+        box-shadow: 0 40px 60px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Card image container */
+      .card-img {
+        height: 280px;
+        overflow: hidden;
+        position: relative;
+        clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 85% 95%, 0% 100%);
+        transition:
+          clip-path 0.4s,
+          transform 0.3s;
+      }
+      .product-card:hover .card-img {
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+      }
+
+      .card-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.7s;
+      }
+      .product-card:hover .card-img img {
+        transform: scale(1.1);
+      }
+
+      .card-img::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.4) 50%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        transform: rotate(30deg);
+        transition: left 0.5s;
+        pointer-events: none;
+        opacity: 0;
+      }
+      .product-card:hover .card-img::after {
+        left: 100%;
+        opacity: 1;
+      }
+
+      .card-badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: #e7cfa7;
+        color: #2c2c2c;
+        font-weight: 600;
+        font-size: 0.8rem;
+        padding: 6px 14px;
+        border-radius: 40px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        z-index: 3;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        animation: badgePulse 2s infinite;
+      }
+      @keyframes badgePulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .product-card.alt .card-img {
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 15% 95%, 0% 85%);
+      }
+      .product-card.alt:hover .card-img {
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+      }
+      .product-card.alt .card-badge {
+        left: 15px;
+        right: auto;
+        background: #cfb597;
+      }
+
+      .card-info {
+        padding: 25px 20px 25px;
+        background: #fff;
+        position: relative;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      .card-info h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        margin-bottom: 6px;
+        color: #2c2c2c;
+        transition: color 0.3s;
+      }
+      .product-card:hover .card-info h3 {
+        color: #b79b6e;
+      }
+      .card-desc {
+        font-size: 0.9rem;
+        color: #7a6e64;
+        margin-bottom: 16px;
+        line-height: 1.4;
+        border-left: 3px solid #e7cfa7;
+        padding-left: 12px;
+      }
+
+      .card-btn {
+        background: transparent;
+        border: none;
+        color: #2c2c2c;
+        font-weight: 600;
+        font-size: 0.9rem;
+        padding: 8px 0;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-top: auto;
+        align-self: flex-start;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        border-bottom: 2px solid #e7cfa7;
+      }
+      .card-btn span {
+        font-size: 1.2rem;
+        transition: transform 0.3s;
+      }
+      .card-btn:hover {
+        color: #b79b6e;
+        gap: 10px;
+      }
+      .card-btn:hover span {
+        transform: translateX(4px);
+      }
+
+      .card-img .icon-hint {
+        position: absolute;
+        bottom: 15px;
+        left: 15px;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(4px);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        color: #2c2c2c;
+        opacity: 0;
+        transform: scale(0.5);
+        transition:
+          opacity 0.4s,
+          transform 0.4s;
+        z-index: 4;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+      .product-card:hover .icon-hint {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      /* ========== MODAL STYLES ========== */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(8px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition:
+          opacity 0.4s,
+          visibility 0.4s;
+      }
+      .modal-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+      .modal-content {
+        background: #fff;
+        max-width: 800px;
+        width: 90%;
+        border-radius: 40px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 50px 80px rgba(0, 0, 0, 0.5);
+        transform: scale(0.8);
+        transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+      }
+      .modal-overlay.active .modal-content {
+        transform: scale(1);
+      }
+      .modal-img {
+        height: 350px;
+        overflow: hidden;
+      }
+      .modal-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .modal-body {
+        padding: 30px;
+        position: relative;
+      }
+      .modal-body h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 2.2rem;
+        margin-bottom: 10px;
+      }
+      .modal-body p {
+        font-size: 1.1rem;
+        color: #4a4a4a;
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+      .modal-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: #e7cfa7;
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .modal-close:hover {
+        background: #d8b98c;
+        transform: rotate(90deg);
+      }
+      .modal-detail {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-top: 15px;
+      }
+      .modal-detail span {
+        background: #f1ebe5;
+        padding: 6px 18px;
+        border-radius: 40px;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 700px) {
+        .hero-content h1 {
+          font-size: 2.8rem;
+        }
+        .product-grid {
+          gap: 25px;
+        }
+        .bedcovers-hero {
+          margin-top: 60px;
+        }
+        .modal-img {
+          height: 250px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAVBAR (unchanged) -->
+    <nav class="navbar">
+      <div class="logo">
+        <!-- SVG crown logo as image (inline SVG) – now larger -->
+        <img src="../../assets/Images/Ashley logo.png" alt="Ashley Crown Logo" />
+      </div>
+
+      <div class="menu-toggle" id="menuToggle" onclick="toggleMenu()">☰</div>
+
+      <div class="nav-links" id="navLinks">
+        <a href="../../Components/index.html">Home</a>
+        <a href="../../Components/about.html">About</a>
+
+        <div class="dropdown">
+          <a
+            href="../../Components/Bedding/Bedding.html"
+            onclick="toggleDropdown(event)"
+            >Bedding</a
+          >
+          <div class="dropdown-menu">
+            <a href="../../Components/Bedding/Bedsheet.html">Bed Sheets</a>
+            <a href="../../Components/Bedding/Bed Covers.html">Bed Covers</a>
+            <a href="../../Components/Bedding/Blankets.html">Blankets</a>
+            <a href="../../Components/Bedding/Dohars.html">Dohars</a>
+            <a href="../../Components/Bedding/Pillows.html">Pillows</a>
+            <a href="../../Components/Bedding/Pillows Covers.html"
+              >Pillows Covers</a
+            >
+            <a href="../../Components/Bedding/Quilts.html">Quilts</a>
+            <a href="../../Components/Bedding/Mattress Guards.html"
+              >Mattress Guards</a
+            >
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <a href="../../Components/Bath/bath.html" onclick="toggleDropdown(event)"
+            >Bath</a
+          >
+          <div class="dropdown-menu">
+            <a href="../../Components/Bath/Towels.html">Towels</a>
+            <a href="../../Components/Bath/Face Towels.html">Face Towels</a>
+            <a href="../../Components/Bath/Hand Towels.html">Hand Towels</a>
+            <a href="../../Components/Bath/Bath Mats.html">Bath Mats</a>
+            <a href="../../Components/Bath/Bath Robes.html">Bath Robes</a>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <a
+            href="../../Components/Living/Living.html"
+            onclick="toggleDropdown(event)"
+            >Living</a
+          >
+          <div class="dropdown-menu">
+            <a href="../../Components/Living/Curtains.html">Curtains</a>
+            <a href="../../Components/Living/Carpets.html">Carpets</a>
+            <a href="../../Components/Living/Cushion Covers.html"
+              >Cushion Covers</a
+            >
+            <a href="../../Components/Living/Cushion Fillers.html"
+              >Cushion Fillers</a
+            >
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <a
+            href="../../Components/Home Accessories/Accessories.html"
+            onclick="toggleDropdown(event)"
+            >Home Accessories</a
+          >
+          <div class="dropdown-menu">
+            <a href="../../Components/Home Accessories/Dining Accessories.html"
+              >Dining Accessories</a
+            >
+            <a href="../../Components/Home Accessories/Kids Range.html"
+              >Kids Range</a
+            >
+            <a href="../../Components/Home Accessories/Decor Items.html"
+              >Decor Items</a
+            >
+          </div>
+        </div>
+
+        <a href="../../Components/contact.html">Contact</a>
+      </div>
+
+      <a href="../../Components/contact.html" class="nav-btn">VISIT STORE</a>
+    </nav>
+    <!-- BED COVERS HERO -->
+    <section class="bedcovers-hero">
+      <div class="hero-content">
+        <h1>Bed Covers</h1>
+        <p>Elegant layers for your sanctuary</p>
+      </div>
+    </section>
+
+    <!-- PRODUCT GRID SECTION -->
+    <section class="product-section">
+      <h2 class="section-title">timeless & textured</h2>
+      <div class="section-sub">handcrafted covers in natural fabrics</div>
+
+      <!-- FILTER BAR (categories) -->
+      <div class="filter-bar">
+        <span class="filter-tag active" data-filter="all"
+          ><span>All</span></span
+        >
+        <span class="filter-tag" data-filter="cotton"><span>Cotton</span></span>
+        <span class="filter-tag" data-filter="linen"><span>Linen</span></span>
+        <span class="filter-tag" data-filter="velvet"><span>Velvet</span></span>
+        <span class="filter-tag" data-filter="quilted"
+          ><span>Quilted</span></span
+        >
+      </div>
+
+      <div class="product-grid">
+        <!-- card 1 - Linen -->
+        <div
+          class="product-card"
+          data-category="linen"
+          data-title="Linen weave cover"
+          data-desc="100% European flax · stonewashed · breathable and soft"
+          data-img="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=2158&auto=format&fit=crop"
+          data-badge="new"
+          data-material="European flax"
+          data-care="machine wash cold"
+        >
+          <div class="card-img">
+            <img
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
+              alt="Linen Bed Cover"
+            />
+            <span class="card-badge">new</span>
+            <span class="icon-hint">🛏️</span>
+          </div>
+          <div class="card-info">
+            <h3>Linen weave cover</h3>
+            <div class="card-desc">100% European flax · stonewashed</div>
+            <button class="card-btn discover-btn">
+              discover <span>→</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- card 2 - Quilted -->
+        <div
+          class="product-card alt"
+          data-category="quilted"
+          data-title="Quilted cotton"
+          data-desc="lightweight · matelassé texture · all-season comfort"
+          data-img="https://images.unsplash.com/photo-1600585152220-90363fe7e115?q=80&w=2070&auto=format&fit=crop"
+          data-badge="best seller"
+          data-material="organic cotton"
+          data-care="gentle cycle"
+        >
+          <div class="card-img">
+            <img
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
+              alt="Quilted Cotton Cover"
+            />
+            <span class="card-badge">best seller</span>
+            <span class="icon-hint">✨</span>
+          </div>
+          <div class="card-info">
+            <h3>Quilted cotton</h3>
+            <div class="card-desc">lightweight · matelassé texture</div>
+            <button class="card-btn discover-btn">
+              discover <span>→</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- card 3 - Velvet -->
+        <div
+          class="product-card"
+          data-category="velvet"
+          data-title="Velvet damask"
+          data-desc="rich texture · moody tones · luxe feel"
+          data-img="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=2070&auto=format&fit=crop"
+          data-badge="luxe"
+          data-material="velvet blend"
+          data-care="dry clean only"
+        >
+          <div class="card-img">
+            <img
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
+              alt="Velvet Cover"
+            />
+            <span class="card-badge">luxe</span>
+            <span class="icon-hint">🧶</span>
+          </div>
+          <div class="card-info">
+            <h3>Velvet damask</h3>
+            <div class="card-desc">rich texture · moody tones</div>
+            <button class="card-btn discover-btn">
+              discover <span>→</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- card 4 - Cotton (Percale) -->
+        <div
+          class="product-card alt"
+          data-category="cotton"
+          data-title="Percale cover"
+          data-desc="crisp · 300 thread count · organic cotton"
+          data-img="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=2071&auto=format&fit=crop"
+          data-badge="organic"
+          data-material="cotton percale"
+          data-care="machine wash"
+        >
+          <div class="card-img">
+            <img
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
+              alt="Cotton Percale"
+            />
+            <span class="card-badge">organic</span>
+            <span class="icon-hint">🌿</span>
+          </div>
+          <div class="card-info">
+            <h3>Percale cover</h3>
+            <div class="card-desc">crisp · 300 thread count</div>
+            <button class="card-btn discover-btn">
+              discover <span>→</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- card 5 - Cotton (Waffle) -->
+        <div
+          class="product-card"
+          data-category="cotton"
+          data-title="Waffle weave"
+          data-desc="cotton · breathable · textured"
+          data-img="https://images.unsplash.com/photo-1584102272777-3b7e9b9b7b7e?q=80&w=1974&auto=format&fit=crop"
+          data-badge="new"
+          data-material="cotton waffle"
+          data-care="machine wash"
+        >
+          <div class="card-img">
+            <img
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
+              alt="Waffle Weave"
+            />
+            <span class="card-badge">new</span>
+            <span class="icon-hint">🧼</span>
+          </div>
+          <div class="card-info">
+            <h3>Waffle weave</h3>
+            <div class="card-desc">cotton · breathable</div>
+            <button class="card-btn discover-btn">
+              discover <span>→</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- card 6 - Cotton (Boho) -->
+        <div
+          class="product-card alt"
+          data-category="cotton"
+          data-title="Boho block print"
+          data-desc="artisan · natural dyes · handcrafted"
+          data-img="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2070&auto=format&fit=crop"
+          data-badge="hand block"
+          data-material="cotton, natural dyes"
+          data-care="gentle wash"
+        >
+          <div class="card-img">
+            <img
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
+              alt="Boho Cover"
+            />
+            <span class="card-badge">hand block</span>
+            <span class="icon-hint">🌸</span>
+          </div>
+          <div class="card-info">
+            <h3>Boho block print</h3>
+            <div class="card-desc">artisan · natural dyes</div>
+            <button class="card-btn discover-btn">
+              discover <span>→</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- card 7 - Cotton (Chambray) -->
+        <div
+          class="product-card"
+          data-category="cotton"
+          data-title="Chambray"
+          data-desc="light denim feel · soft"
+          data-img="https://images.unsplash.com/photo-1630345411935-6d6a8c6d3b7e?q=80&w=1974&auto=format&fit=crop"
+          data-badge="soft"
+          data-material="chambray cotton"
+          data-care="machine wash"
+        >
+          <div class="card-img">
+            <img
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
+              alt="Chambray Cover"
+            />
+            <span class="card-badge">soft</span>
+            <span class="icon-hint">☁️</span>
+          </div>
+          <div class="card-info">
+            <h3>Chambray</h3>
+            <div class="card-desc">light denim feel</div>
+            <button class="card-btn discover-btn">
+              discover <span>→</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- card 8 - Cotton (Jacquard) -->
+        <div
+          class="product-card alt"
+          data-category="cotton"
+          data-title="Jacquard pattern"
+          data-desc="elegant detail · woven"
+          data-img="https://images.unsplash.com/photo-1600166898405-da9535204843?q=80&w=1974&auto=format&fit=crop"
+          data-badge="woven"
+          data-material="jacquard cotton"
+          data-care="dry clean"
+        >
+          <div class="card-img">
+            <img
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
+              alt="Jacquard Cover"
+            />
+            <span class="card-badge">woven</span>
+            <span class="icon-hint">🕸️</span>
+          </div>
+          <div class="card-info">
+            <h3>Jacquard pattern</h3>
+            <div class="card-desc">elegant detail</div>
+            <button class="card-btn discover-btn">
+              discover <span>→</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER (unchanged) -->
+    <footer>
+      © 2026 <span>Ashley Home Decors</span>. All Rights Reserved.
+    </footer>
+
+    <!-- MODAL OVERLAY -->
+    <div class="modal-overlay" id="productModal">
+      <div class="modal-content">
+        <div class="modal-img">
+          <img src="" alt="" id="modalImg" />
+        </div>
+        <div class="modal-body">
+          <button class="modal-close" id="modalClose">&times;</button>
+          <h2 id="modalTitle"></h2>
+          <p id="modalDesc"></p>
+          <div class="modal-detail">
+            <span id="modalMaterial"></span>
+            <span id="modalCare"></span>
+            <span id="modalBadge"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- nav script (unchanged) -->
+    <script src="../../assets/js/nav.js"></script>
+
+    <!-- Filter and Modal Script -->
+    <script>
+      // ========== FILTER FUNCTIONALITY ==========
+      const filterTags = document.querySelectorAll(".filter-tag");
+      const productCards = document.querySelectorAll(".product-card");
+
+      // Add click event to each filter tag
+      filterTags.forEach((tag) => {
+        tag.addEventListener("click", function () {
+          // Remove active class from all tags
+          filterTags.forEach((t) => t.classList.remove("active"));
+          // Add active class to clicked tag
+          this.classList.add("active");
+
+          // Get filter value
+          const filterValue = this.getAttribute("data-filter"); // 'all', 'cotton', etc.
+
+          // Show/hide cards based on category
+          productCards.forEach((card) => {
+            const cardCategory = card.getAttribute("data-category");
+            if (filterValue === "all" || cardCategory === filterValue) {
+              card.style.display = "flex"; // or 'block' - but card uses flex
+            } else {
+              card.style.display = "none";
+            }
+          });
+        });
+      });
+
+      // ========== MODAL FUNCTIONALITY ==========
+      const modal = document.getElementById("productModal");
+      const modalImg = document.getElementById("modalImg");
+      const modalTitle = document.getElementById("modalTitle");
+      const modalDesc = document.getElementById("modalDesc");
+      const modalMaterial = document.getElementById("modalMaterial");
+      const modalCare = document.getElementById("modalCare");
+      const modalBadge = document.getElementById("modalBadge");
+      const closeBtn = document.getElementById("modalClose");
+
+      const discoverBtns = document.querySelectorAll(".discover-btn");
+
+      function openModal(card) {
+        const title = card.getAttribute("data-title") || "Bed cover";
+        const desc = card.getAttribute("data-desc") || "Beautiful cover";
+        const img = card.getAttribute("data-img") || "";
+        const material = card.getAttribute("data-material") || "premium fabric";
+        const care = card.getAttribute("data-care") || "gentle care";
+        const badge = card.getAttribute("data-badge") || "";
+
+        modalImg.src = img;
+        modalTitle.textContent = title;
+        modalDesc.textContent = desc;
+        modalMaterial.textContent = "🧵 " + material;
+        modalCare.textContent = "🧺 " + care;
+        modalBadge.textContent = "🏷️ " + badge;
+
+        modal.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      discoverBtns.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const card = btn.closest(".product-card");
+          if (card) openModal(card);
+        });
+      });
+
+      function closeModal() {
+        modal.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+
+      closeBtn.addEventListener("click", closeModal);
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
+      });
+
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal.classList.contains("active")) {
+          closeModal();
+        }
+      });
+    </script>
+  </body>
+</html>

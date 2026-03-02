@@ -1,0 +1,1749 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ashley Home · Bedding Collection</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- NAV CSS (unchanged) -->
+    <link rel="stylesheet" href="../../assets/css/nav.css" />
+
+    <style>
+      /* ========== ORIGINAL STYLES (kept for compatibility – not used in new sections) ========== */
+      body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        background: #faf8f6;
+        color: #2c2c2c;
+      }
+      :root {
+        --bg-main: #e6d9cf;
+        --bg-light: #f4efe9;
+        --text-dark: #3a2f2a;
+        --accent: #9b7e6b;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* ========== NEW PRODUCT PAGE STYLES (bedding) ========== */
+
+      /* ----- hero (bedding) ----- */
+      .bedding-hero {
+        height: 80vh;
+        min-height: 600px;
+        background:
+          linear-gradient(115deg, #2b2b2b 0%, #4f4a45 100%),
+          url("https://images.unsplash.com/photo-1505693314120-0d443867891c?q=80&w=2070&auto=format&fit=crop");
+        background-size: cover;
+        background-blend-mode: overlay;
+        background-position: center 30%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        position: relative;
+      }
+      .bedding-hero::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        background: linear-gradient(to top, #faf8f6, transparent);
+      }
+      .hero-content {
+        max-width: 800px;
+        padding: 20px;
+        z-index: 2;
+      }
+      .hero-content h1 {
+        font-family: "Playfair Display", serif;
+        font-size: 5rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+        text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+      .hero-content p {
+        font-size: 1.3rem;
+        font-weight: 300;
+        opacity: 0.9;
+        margin-bottom: 30px;
+      }
+      .hero-btn {
+        background: #e7cfa7;
+        border: none;
+        padding: 15px 45px;
+        border-radius: 40px;
+        font-weight: 600;
+        color: #2c2c2c;
+        text-decoration: none;
+        display: inline-block;
+        transition: 0.3s;
+        font-size: 1.1rem;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+      .hero-btn:hover {
+        background: #d8b98c;
+        transform: translateY(-4px);
+      }
+
+      /* ----- floating fabric texture (creative element) ----- */
+      .fabric-float {
+        position: absolute;
+        bottom: 15%;
+        right: 5%;
+        width: 200px;
+        height: 200px;
+        background: url("https://images.unsplash.com/photo-1589310243389-96a5483213a8?q=80&w=1974&auto=format&fit=crop")
+          center/cover;
+        border-radius: 50%;
+        border: 8px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 30px 50px rgba(0, 0, 0, 0.4);
+        animation: slowSpin 20s infinite linear;
+        z-index: 3;
+      }
+      @keyframes slowSpin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* ----- category tiles (asymmetrical grid) ----- */
+      .bedding-types {
+        padding: 100px 8%;
+        background: #faf8f6;
+      }
+      .types-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.9fr 0.9fr;
+        gap: 25px;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+      .type-item {
+        position: relative;
+        border-radius: 30px;
+        overflow: hidden;
+        height: 380px;
+        box-shadow: 0 25px 40px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+      }
+      .type-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.8s;
+      }
+      .type-item:hover img {
+        transform: scale(1.08);
+      }
+      .type-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.7),
+          transparent 40%
+        );
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 30px;
+        color: white;
+      }
+      .type-overlay h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 2.2rem;
+        margin-bottom: 10px;
+        transform: translateY(20px);
+        opacity: 0;
+        transition: all 0.4s;
+      }
+      .type-item:hover .type-overlay h3 {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      .type-overlay a {
+        color: #e7cfa7;
+        text-decoration: none;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 0.9rem;
+        transform: translateY(20px);
+        opacity: 0;
+        transition: all 0.4s 0.1s;
+      }
+      .type-item:hover .type-overlay a {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      .type-item:nth-child(1) {
+        grid-row: span 2;
+        height: 100%;
+      }
+      .type-item:nth-child(2) {
+        grid-column: span 1;
+      }
+      .type-item:nth-child(3) {
+        grid-column: span 1;
+      }
+      .type-item:nth-child(4) {
+        grid-column: span 2;
+        height: 280px;
+      }
+      @media (max-width: 900px) {
+        .types-grid {
+          grid-template-columns: 1fr;
+        }
+        .type-item:nth-child(1) {
+          height: 380px;
+        }
+      }
+
+      /* ----- featured products (hover cards with rotation) ----- */
+      .featured-products {
+        padding: 80px 8%;
+        background: white;
+      }
+      .section-title {
+        font-family: "Playfair Display", serif;
+        font-size: 2.8rem;
+        text-align: center;
+        margin-bottom: 60px;
+        color: #2c2c2c;
+      }
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 35px;
+        max-width: 1300px;
+        margin: 0 auto;
+      }
+      .product-card {
+        background: #f9f6f2;
+        border-radius: 30px;
+        overflow: hidden;
+        transition: 0.5s;
+        position: relative;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+      }
+      .product-card:hover {
+        transform: translateY(-15px) rotate(1deg);
+        box-shadow: 0 30px 50px rgba(0, 0, 0, 0.15);
+      }
+      .product-img {
+        height: 300px;
+        overflow: hidden;
+      }
+      .product-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: 0.6s;
+      }
+      .product-card:hover .product-img img {
+        transform: scale(1.1);
+      }
+      .product-info {
+        padding: 25px 20px;
+        text-align: center;
+      }
+      .product-info h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        margin-bottom: 8px;
+      }
+      .product-price {
+        font-size: 1.2rem;
+        color: #b79b6e;
+        font-weight: 600;
+        margin-bottom: 15px;
+      }
+      .btn-shop {
+        background: transparent;
+        border: 2px solid #e7cfa7;
+        padding: 10px 25px;
+        border-radius: 40px;
+        font-weight: 500;
+        color: #2c2c2c;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .btn-shop:hover {
+        background: #e7cfa7;
+        border-color: #e7cfa7;
+      }
+
+      /* ===== NEW SECTION: UNIQUE & STYLISH CATEGORY BUTTONS (for next pages) ===== */
+      .category-buttons {
+        padding: 80px 8% 100px;
+        background: #ffffff;
+        text-align: center;
+      }
+      .button-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 25px;
+        max-width: 1300px;
+        margin: 0 auto;
+      }
+      .stylish-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 18px 40px;
+        border-radius: 60px;
+        font-size: 1.3rem;
+        font-weight: 600;
+        text-decoration: none;
+        color: #2c2c2c;
+        background: #f0e4d3; /* fallback */
+        transition: all 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+        border: 2px solid transparent;
+        min-width: 200px;
+        letter-spacing: 0.5px;
+        position: relative;
+        overflow: hidden;
+        flex: 0 1 auto;
+      }
+      .stylish-btn span {
+        margin-left: 8px;
+        transition: margin 0.3s ease;
+        font-size: 1.6rem;
+        line-height: 1;
+      }
+      /* unique background colors for each button */
+      .stylish-btn:nth-child(1) {
+        background: #d9e5e0;
+      } /* bed sheets - soft teal */
+      .stylish-btn:nth-child(2) {
+        background: #f5d7d0;
+      } /* bed covers - peach */
+      .stylish-btn:nth-child(3) {
+        background: #e2cfc4;
+      } /* pillows - taupe */
+      .stylish-btn:nth-child(4) {
+        background: #cfd9d7;
+      } /* quilts - mint */
+      .stylish-btn:nth-child(5) {
+        background: #edd9c6;
+      } /* mattress guards - cream */
+
+      /* diagonal shine effect (unique touch) */
+      .stylish-btn::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -60%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          115deg,
+          rgba(255, 255, 255, 0) 10%,
+          rgba(255, 255, 255, 0.4) 30%,
+          rgba(255, 255, 255, 0) 50%
+        );
+        transform: rotate(25deg);
+        transition: left 0.5s;
+        pointer-events: none;
+      }
+      .stylish-btn:hover::after {
+        left: 100%;
+      }
+      .stylish-btn:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 25px 35px rgba(0, 0, 0, 0.15);
+        border-color: rgba(44, 44, 44, 0.1);
+      }
+      .stylish-btn:hover span {
+        margin-left: 18px;
+      }
+      /* subtle darken on hover for each (preserve uniqueness) */
+      .stylish-btn:nth-child(1):hover {
+        background: #cbdad3;
+      }
+      .stylish-btn:nth-child(2):hover {
+        background: #ebcbc2;
+      }
+      .stylish-btn:nth-child(3):hover {
+        background: #d7bfb2;
+      }
+      .stylish-btn:nth-child(4):hover {
+        background: #c0ccca;
+      }
+      .stylish-btn:nth-child(5):hover {
+        background: #e2ccb8;
+      }
+
+      /* optional icon-like emoji for extra flavor (unique identifiers) */
+      .stylish-btn::before {
+        content: "🛏️";
+        margin-right: 10px;
+        font-size: 1.4rem;
+        filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.1));
+      }
+      .stylish-btn:nth-child(2)::before {
+        content: "🛌";
+      }
+      .stylish-btn:nth-child(3)::before {
+        content: "🕊️";
+      }
+      .stylish-btn:nth-child(4)::before {
+        content: "🧵";
+      }
+      .stylish-btn:nth-child(5)::before {
+        content: "🛡️";
+      }
+
+      @media (max-width: 700px) {
+        .stylish-btn {
+          min-width: 160px;
+          padding: 14px 25px;
+          font-size: 1.1rem;
+        }
+        .stylish-btn::before {
+          font-size: 1.2rem;
+        }
+      }
+
+      /* ----- material story (split with texture closeup) ----- */
+      .material-story {
+        padding: 100px 8%;
+        background: #f3ede6;
+      }
+      .story-container {
+        display: flex;
+        gap: 60px;
+        align-items: center;
+        max-width: 1300px;
+        margin: 0 auto;
+      }
+      .story-text {
+        flex: 1;
+      }
+      .story-text h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 2.8rem;
+        margin-bottom: 30px;
+        color: #2c2c2c;
+      }
+      .story-text p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #4a4a4a;
+        margin-bottom: 25px;
+      }
+      .story-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: #b79b6e;
+        font-weight: 600;
+        text-decoration: none;
+        border-bottom: 2px solid #e7cfa7;
+        padding-bottom: 5px;
+      }
+      .story-link:hover {
+        gap: 15px;
+      }
+      .story-visual {
+        flex: 1;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      .fabric-clip {
+        border-radius: 40px;
+        overflow: hidden;
+        box-shadow: 0 25px 40px rgba(0, 0, 0, 0.1);
+        transition: 0.4s;
+      }
+      .fabric-clip:hover {
+        transform: scale(1.03);
+      }
+      .fabric-clip img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .fabric-clip:first-child {
+        grid-column: span 2;
+        height: 280px;
+      }
+      .fabric-clip:nth-child(2) {
+        height: 200px;
+      }
+      .fabric-clip:nth-child(3) {
+        height: 200px;
+      }
+
+      /* ----- customer words (asymmetrical quote strip) ----- */
+      .love-notes {
+        padding: 80px 8%;
+        background: white;
+      }
+      .notes-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        justify-content: center;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .note {
+        background: #faf8f6;
+        padding: 40px 30px;
+        border-radius: 50px 20px 50px 20px;
+        flex: 1 1 260px;
+        box-shadow: 0 20px 30px rgba(0, 0, 0, 0.02);
+        transition: 0.3s;
+        position: relative;
+      }
+      .note:hover {
+        background: #fcf5ec;
+        transform: translateY(-8px);
+      }
+      .note i {
+        font-size: 2.5rem;
+        color: #e7cfa7;
+        opacity: 0.5;
+        margin-bottom: 15px;
+        display: block;
+      }
+      .note p {
+        font-family: "Playfair Display", serif;
+        font-size: 1.2rem;
+        font-style: italic;
+        color: #3a2f2a;
+      }
+      .note .customer {
+        margin-top: 20px;
+        font-weight: 500;
+        color: #b79b6e;
+      }
+
+      /* ----- bedding cta (soft) ----- */
+      .bedding-cta {
+        padding: 100px 8%;
+        background: #e7cfa7;
+        text-align: center;
+      }
+      .bedding-cta h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 3rem;
+        color: #2c2c2c;
+        margin-bottom: 20px;
+      }
+      .bedding-cta p {
+        font-size: 1.2rem;
+        max-width: 600px;
+        margin: 0 auto 40px;
+        color: #3a2f2a;
+      }
+      .bedding-cta .btn {
+        background: #2c2c2c;
+        color: white;
+        padding: 16px 50px;
+        border-radius: 40px;
+        text-decoration: none;
+        font-weight: 600;
+        display: inline-block;
+        transition: 0.3s;
+        border: 2px solid transparent;
+      }
+      .bedding-cta .btn:hover {
+        background: transparent;
+        color: #2c2c2c;
+        border-color: #2c2c2c;
+      }
+
+      @media (max-width: 800px) {
+        .story-container {
+          flex-direction: column;
+        }
+        .hero-content h1 {
+          font-size: 3.5rem;
+        }
+        .fabric-float {
+          width: 120px;
+          height: 120px;
+        }
+      }
+           /* ===== CATEGORY BUTTON BAR ===== */
+      .category-bar {
+        padding: 60px 5% 40px;
+        background: linear-gradient(145deg, #dae2e0, #cbd5d1);
+        text-align: center;
+      }
+
+      .category-bar h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 2.5rem;
+        color: #1f3a3f;
+        margin-bottom: 30px;
+        animation: fadeUp 1s ease;
+      }
+
+      .button-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* BASE 3D BUTTON STYLE (inspired by original bath mat button) */
+      .cat-btn {
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 18px 40px;
+        border-radius: 30px 10px 30px 10px;
+        font-size: 1.4rem;
+        box-shadow:
+          0 8px 0 rgba(0, 0, 0, 0.2),
+          0 12px 20px rgba(0, 0, 0, 0.2);
+        border: none;
+        animation: float 5s infinite ease-in-out;
+        color: #1f3a3f; /* default dark text, but each button can override */
+      }
+
+      /* each button gets unique colors */
+      .btn-1 {
+        background: #ffb6c1; /* light pink */
+        box-shadow:
+          0 8px 0 #d46b7a,
+          0 12px 20px rgba(0, 0, 0, 0.2);
+        color: #2c2c2c;
+      }
+      .btn-1:hover {
+        background: #ffc0cb;
+        transform: translateY(-4px);
+        box-shadow:
+          0 12px 0 #d46b7a,
+          0 16px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn-2 {
+        background: #a7d8de; /* soft turquoise */
+        box-shadow:
+          0 8px 0 #5f9ea0,
+          0 12px 20px rgba(0, 0, 0, 0.2);
+        color: #1f3a3f;
+      }
+      .btn-2:hover {
+        background: #b0e0e6;
+        transform: translateY(-4px);
+        box-shadow:
+          0 12px 0 #5f9ea0,
+          0 16px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn-3 {
+        background: #f4c542; /* mustard */
+        box-shadow:
+          0 8px 0 #c68b1f,
+          0 12px 20px rgba(0, 0, 0, 0.2);
+        color: #1f3a3f;
+      }
+      .btn-3:hover {
+        background: #fad05c;
+        transform: translateY(-4px);
+        box-shadow:
+          0 12px 0 #c68b1f,
+          0 16px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn-4 {
+        background: #b39ddb; /* lavender */
+        box-shadow:
+          0 8px 0 #7e6b9a,
+          0 12px 20px rgba(0, 0, 0, 0.2);
+        color: #1f3a3f;
+      }
+      .btn-4:hover {
+        background: #c5b4e3;
+        transform: translateY(-4px);
+        box-shadow:
+          0 12px 0 #7e6b9a,
+          0 16px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn-5 {
+        background: #a4d8a4; /* sage green */
+        box-shadow:
+          0 8px 0 #5c8d5c,
+          0 12px 20px rgba(0, 0, 0, 0.2);
+        color: #1f3a3f;
+      }
+      .btn-5:hover {
+        background: #b8e0b8;
+        transform: translateY(-4px);
+        box-shadow:
+          0 12px 0 #5c8d5c,
+          0 16px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      /* individual animation delays */
+      .btn-1 {
+        animation-delay: 0s;
+      }
+      .btn-2 {
+        animation-delay: 0.2s;
+      }
+      .btn-3 {
+        animation-delay: 0.4s;
+      }
+      .btn-4 {
+        animation-delay: 0.6s;
+      }
+      .btn-5 {
+        animation-delay: 0.8s;
+      }
+
+      /* ===== ABOUT ===== */
+      .about {
+        padding: 120px 8%;
+      
+        display: flex;
+        gap: 80px;
+        align-items: center;
+        background: #fff;
+      }
+
+      .about-image {
+        flex: 1;
+        position: relative;
+      }
+
+      .about-image img {
+        width: 100%;
+        border-radius: 50px 20px 50px 20px;
+        box-shadow: 30px 30px 0 #a7c7c5;
+        transition: 0.4s;
+      }
+
+      .about-image img:hover {
+        transform: translate(-10px, -10px);
+        box-shadow: 40px 40px 0 #6f9e9c;
+      }
+
+      .about-text {
+        flex: 1;
+      }
+
+      .about-text h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 3rem;
+        color: #1f3a3f;
+        margin-bottom: 30px;
+      }
+
+      .about-text p {
+        color: #3d5a5e;
+        line-height: 1.8;
+        font-size: 1.1rem;
+      }
+
+      /* ===== CATEGORY SHOWCASE (unchanged) ===== */
+      .category-section {
+        padding: 100px 8%;
+        background: #f8f4f0;
+      }
+
+      .category-section h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 2.8rem;
+        color: #1f3a3f;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .category-section h2::after {
+        content: "";
+        display: block;
+        width: 100px;
+        height: 3px;
+        background: #c3a18b;
+        margin: 15px auto 0;
+      }
+
+      .towels-showcase {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 40px;
+        align-items: center;
+        margin-bottom: 120px;
+      }
+
+      .towels-text {
+        padding: 40px;
+        background: #fff;
+        border-radius: 100px 20px 100px 20px;
+        box-shadow: 0 30px 40px -15px #1f3a3f;
+        z-index: 2;
+      }
+
+      .towels-text h3 {
+        font-size: 2.4rem;
+        font-family: "Playfair Display", serif;
+        color: #1f3a3f;
+        margin-bottom: 20px;
+      }
+
+      .towels-text p {
+        color: #4d6a6f;
+      }
+
+      .towels-image {
+        height: 400px;
+        background: url("https://www.elitefurnishing.in/cdn/shop/files/Gemini_Generated_Image_z9817wz9817wz981_600x.png?v=1768562662")
+          center/cover;
+        border-radius: 200px 20px 200px 20px;
+        box-shadow: 0 40px 60px -15px #1f3a3f;
+        transition: 0.5s;
+      }
+
+      .towels-image:hover {
+        transform: rotate(2deg) scale(1.02);
+      }
+
+      .face-showcase {
+        display: flex;
+        flex-direction: row-reverse;
+        gap: 50px;
+        align-items: center;
+        margin-bottom: 120px;
+      }
+
+      .face-bubbles {
+        flex: 1;
+        display: flex;
+        gap: 30px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .bubble {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        overflow: hidden;
+        box-shadow: 0 25px 35px -10px #1f3a3f;
+        transition: 0.5s;
+        border: 5px solid #fff;
+        animation: float 5s infinite ease-in-out;
+      }
+
+      .bubble:nth-child(2) {
+        animation-delay: 0.3s;
+      }
+      .bubble:nth-child(3) {
+        animation-delay: 0.6s;
+      }
+
+      .bubble img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .bubble:hover {
+        transform: scale(1.1) rotate(5deg);
+        border-color: #a7c7c5;
+      }
+
+      .face-text {
+        flex: 1;
+        background: #e1e9e6;
+        padding: 50px;
+        border-radius: 70px 20px 70px 20px;
+      }
+
+      .face-text h3 {
+        font-size: 2.2rem;
+        font-family: "Playfair Display", serif;
+        color: #1f3a3f;
+      }
+
+      .hand-showcase {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        align-items: stretch;
+        margin-bottom: 120px;
+      }
+
+      .hand-image {
+        background: url("https://www.elitefurnishing.in/cdn/shop/files/Gemini_Generated_Image_z9817wz9817wz981_600x.png?v=1768562662")
+          center/cover;
+        border-radius: 40px 200px 40px 200px;
+        box-shadow: 0 35px 50px -15px #1f3a3f;
+        min-height: 400px;
+        transition: 0.5s;
+      }
+
+      .hand-image:hover {
+        transform: scale(0.98) translateY(-10px);
+      }
+
+      .hand-details {
+        background: #fff0e5;
+        padding: 50px;
+        border-radius: 80px 20px 80px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .hand-details h3 {
+        font-size: 2.2rem;
+        font-family: "Playfair Display", serif;
+        color: #1f3a3f;
+      }
+
+      .feature-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .feature-list li {
+        margin: 15px 0;
+        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .feature-list li::before {
+        content: "✓";
+        background: #6f9e9c;
+        color: #fff;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .mats-showcase {
+        display: flex;
+        gap: 50px;
+        align-items: center;
+        margin-bottom: 120px;
+        background: #d4dcd9;
+        padding: 60px;
+        border-radius: 150px 20px 150px 20px;
+      }
+
+      .mats-stack {
+        flex: 1;
+        position: relative;
+        height: 400px;
+      }
+
+      .mat-layer {
+        position: absolute;
+        width: 80%;
+        height: 200px;
+        background: #b7afa0;
+        border-radius: 60px 20px 60px 20px;
+        box-shadow: 0 20px 25px -10px #1f3a3f;
+        transition: 0.4s;
+      }
+
+      .mat-layer img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: inherit;
+      }
+
+      .mat-layer:nth-child(1) {
+        top: 0;
+        left: 0;
+        z-index: 3;
+      }
+      .mat-layer:nth-child(2) {
+        top: 30px;
+        left: 30px;
+        z-index: 2;
+      }
+      .mat-layer:nth-child(3) {
+        top: 60px;
+        left: 60px;
+        z-index: 1;
+      }
+
+      .mat-layer:hover {
+        transform: translateY(-15px) rotate(2deg);
+      }
+
+      .mats-text {
+        flex: 1;
+        background: #fff;
+        padding: 40px;
+        border-radius: 40px 20px 40px 20px;
+      }
+
+      .mats-text h3 {
+        font-size: 2.2rem;
+        font-family: "Playfair Display", serif;
+        color: #1f3a3f;
+      }
+
+      .robes-showcase {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 40px;
+        align-items: center;
+      }
+
+      .robes-hanger {
+        background: #ebdbce;
+        border-radius: 200px 200px 40px 40px;
+        padding: 50px 20px;
+        text-align: center;
+        box-shadow: inset 0 -10px 20px #d4b7a3;
+      }
+
+      .robes-hanger img {
+        width: 100%;
+        max-width: 280px;
+        border-radius: 50px 10px 50px 10px;
+        box-shadow: 0 40px 50px -15px #2c4a4f;
+        transition: 0.5s;
+      }
+
+      .robes-hanger img:hover {
+        transform: scale(1.03) rotate(-1deg);
+      }
+
+      .robes-text {
+        background: #f6efe8;
+        padding: 60px;
+        border-radius: 40px 200px 40px 200px;
+      }
+
+      .robes-text h3 {
+        font-size: 2.2rem;
+        font-family: "Playfair Display", serif;
+        color: #1f3a3f;
+      }
+
+      /* ===== CRAFTSMANSHIP ===== */
+      .craftsmanship {
+        padding: 100px 8%;
+        background: #1f3a3f;
+        color: #fff;
+      }
+
+      .craftsmanship h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 2.8rem;
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .mosaic {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+      }
+
+      .mosaic-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 50px 10px 50px 10px;
+        aspect-ratio: 1;
+      }
+
+      .mosaic-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: 0.6s;
+      }
+
+      .mosaic-item:hover img {
+        transform: scale(1.15);
+      }
+
+      .mosaic-item:nth-child(1) {
+        grid-column: span 2;
+        grid-row: span 2;
+        aspect-ratio: 2/2;
+      }
+      .mosaic-item:nth-child(2) {
+        grid-column: span 1;
+      }
+      .mosaic-item:nth-child(3) {
+        grid-column: span 1;
+      }
+      .mosaic-item:nth-child(4) {
+        grid-column: span 2;
+      }
+
+      .mosaic-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(to top, #1f3a3f, transparent);
+        color: #fff;
+        padding: 30px 20px 15px;
+        font-weight: 500;
+        transform: translateY(100%);
+        transition: 0.4s;
+      }
+
+      .mosaic-item:hover .mosaic-caption {
+        transform: translateY(0);
+      }
+
+      /* ===== RITUAL TIMELINE ===== */
+      .ritual-timeline {
+        padding: 100px 8%;
+        background: #fff;
+      }
+
+      .ritual-timeline h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 2.8rem;
+        text-align: center;
+        color: #1f3a3f;
+        margin-bottom: 80px;
+      }
+
+      .timeline {
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+      }
+
+      .timeline-item {
+        display: flex;
+        gap: 40px;
+        align-items: center;
+        background: #f4f1ed;
+        padding: 40px;
+        border-radius: 100px 20px 100px 20px;
+        transition: 0.4s;
+      }
+
+      .timeline-item:hover {
+        transform: translateX(15px);
+        box-shadow: 0 30px 50px -15px #1f3a3f;
+      }
+
+      .timeline-icon {
+        width: 100px;
+        height: 100px;
+        background: #d4e2df;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        color: #1f3a3f;
+        flex-shrink: 0;
+      }
+
+      .timeline-content {
+        flex: 1;
+      }
+
+      .timeline-content h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
+        color: #1f3a3f;
+      }
+
+      .timeline-content p {
+        color: #3d5a5e;
+      }
+
+      .timeline-price {
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: #1f3a3f;
+      }
+
+      /* ===== HIGHLIGHTS ===== */
+      .highlights {
+        padding: 90px 8%;
+        background: linear-gradient(135deg, #dfe9e7, #f4f8f7);
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 40px;
+        text-align: center;
+      }
+
+      .highlight-box {
+        padding: 40px 20px;
+        background: #ffffffd9;
+        backdrop-filter: blur(4px);
+        border-radius: 50px 20px 50px 20px;
+        box-shadow: 0 20px 40px rgba(31, 58, 63, 0.1);
+        transition: 0.4s;
+        border: 1px solid #a7c7c5;
+      }
+
+      .highlight-box:hover {
+        transform: translateY(-12px);
+        background: #fff;
+        box-shadow: 0 35px 50px -15px #1f3a3f;
+      }
+
+      /* ===== CTA ===== */
+      .cta {
+        padding: 120px 8%;
+        background:
+          linear-gradient(
+            to right,
+            rgba(31, 58, 63, 0.8),
+            rgba(31, 58, 63, 0.5)
+          ),
+          url("https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1600&auto=format")
+            center/cover no-repeat;
+        text-align: center;
+        color: #fff;
+        background-attachment: fixed;
+      }
+
+      .cta h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 3.2rem;
+        margin-bottom: 20px;
+      }
+
+      .cta a {
+        display: inline-block;
+        margin-top: 30px;
+        padding: 14px 42px;
+        background: #e7cfa7;
+        color: #1f3a3f;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 60px 20px 60px 20px;
+        transition: 0.4s;
+      }
+
+      .cta a:hover {
+        background: #d4b7a3;
+        transform: scale(1.05);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ========== NAVBAR (exactly unchanged) ========== -->
+
+    <nav class="navbar">
+      <div class="logo">
+        <!-- SVG crown logo as image (inline SVG) – now larger -->
+        <img src="../../assets/Images/Ashley logo.png" alt="Ashley Crown Logo" />
+      </div>
+
+      <div class="menu-toggle" id="menuToggle" onclick="toggleMenu()">☰</div>
+
+      <div class="nav-links" id="navLinks">
+        <a href="../Components/index.html">Home</a>
+        <a href="../Components/about.html">About</a>
+
+        <div class="dropdown">
+          <a
+            href="../Components/Bedding/Bedding.html"
+            onclick="toggleDropdown(event)"
+            >Bedding</a
+          >
+          <div class="dropdown-menu">
+            <a href="../Components/Bedding/Bedsheet.html">Bed Sheets</a>
+            <a href="../Components/Bedding/Bed Covers.html">Bed Covers</a>
+            <a href="../Components/Bedding/Blankets.html">Blankets</a>
+            <a href="../Components/Bedding/Dohars.html">Dohars</a>
+            <a href="../Components/Bedding/Pillows.html">Pillows</a>
+            <a href="../Components/Bedding/Pillows Covers.html"
+              >Pillows Covers</a
+            >
+            <a href="../Components/Bedding/Quilts.html">Quilts</a>
+            <a href="../Components/Bedding/Mattress Guards.html"
+              >Mattress Guards</a
+            >
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <a href="../Components/Bath/bath.html" onclick="toggleDropdown(event)"
+            >Bath</a
+          >
+          <div class="dropdown-menu">
+            <a href="../Components/Bath/Towels.html">Towels</a>
+            <a href="../Components/Bath/Face Towels.html">Face Towels</a>
+            <a href="../Components/Bath/Hand Towels.html">Hand Towels</a>
+            <a href="../Components/Bath/Bath Mats.html">Bath Mats</a>
+            <a href="../Components/Bath/Bath Robes.html">Bath Robes</a>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <a
+            href="../Components/Living/Living.html"
+            onclick="toggleDropdown(event)"
+            >Living</a
+          >
+          <div class="dropdown-menu">
+            <a href="../Components/Living/Curtains.html">Curtains</a>
+            <a href="../Components/Living/Carpets.html">Carpets</a>
+            <a href="../Components/Living/Cushion Covers.html"
+              >Cushion Covers</a
+            >
+            <a href="../Components/Living/Cushion Fillers.html"
+              >Cushion Fillers</a
+            >
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <a
+            href="../Components/Home Accessories/Accessories.html"
+            onclick="toggleDropdown(event)"
+            >Home Accessories</a
+          >
+          <div class="dropdown-menu">
+            <a href="../Components/Home Accessories/Dining Accessories.html"
+              >Dining Accessories</a
+            >
+            <a href="../Components/Home Accessories/Kids Range.html"
+              >Kids Range</a
+            >
+            <a href="../Components/Home Accessories/Decor Items.html"
+              >Decor Items</a
+            >
+          </div>
+        </div>
+
+        <a href="../Components/contact.html">Contact</a>
+      </div>
+
+      <a href="../Components/contact.html" class="nav-btn">VISIT STORE</a>
+    </nav>
+    <!-- ========== NEW BEDDING PRODUCT PAGE CONTENT ========== -->
+
+    <!-- Hero section with floating fabric element -->
+    <!-- <section class="bedding-hero">
+      <div class="hero-content">
+        <h1>Drape in <br />Softness</h1>
+        <p>Linen, cotton, and whispers of comfort – our bedding collection</p>
+        <a href="#" class="hero-btn">Explore the collection</a>
+      </div>
+      <div class="fabric-float"></div>
+    </section> -->
+
+    <!-- ===== NEW UNIQUE & STYLISH BUTTONS (for next pages) ===== -->
+    <section class="category-buttons">
+      <h2 class="section-title">shop by category</h2>
+      <div class="button-grid">
+        <a href="../Bedding/Bedsheet.html" class="stylish-btn"
+          >Bed Sheets <span>→</span></a
+        >
+        <a href="#" class="stylish-btn">Bed Covers <span>→</span></a>
+        <a href="#" class="stylish-btn">Pillows <span>→</span></a>
+        <a href="#" class="stylish-btn">Quilts <span>→</span></a>
+        <a href="#" class="stylish-btn">Mattress Guards <span>→</span></a>
+      </div>
+    </section>
+
+    <!-- Asymmetrical category tiles (sheets, duvets, pillows, throws) -->
+    <section class="bedding-types">
+      <div class="types-grid">
+        <div class="type-item">
+          <img
+            src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=2071&auto=format&fit=crop"
+            alt="Bed Sheets"
+          />
+          <div class="type-overlay">
+            <h3>Sheets</h3>
+            <a href="#">shop now →</a>
+          </div>
+        </div>
+        <div class="type-item">
+          <img
+            src="https://images.unsplash.com/photo-1584102272777-3b7e9b9b7b7e?q=80&w=1974&auto=format&fit=crop"
+            alt="Duvets"
+          />
+          <div class="type-overlay">
+            <h3>Duvets</h3>
+            <a href="#">shop now →</a>
+          </div>
+        </div>
+        <div class="type-item">
+          <img
+            src="https://images.unsplash.com/photo-1630345411935-6d6a8c6d3b7e?q=80&w=1974&auto=format&fit=crop"
+            alt="Pillows"
+          />
+          <div class="type-overlay">
+            <h3>Pillows</h3>
+            <a href="#">shop now →</a>
+          </div>
+        </div>
+        <div class="type-item">
+          <img
+            src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=2070&auto=format&fit=crop"
+            alt="Throws"
+          />
+          <div class="type-overlay">
+            <h3>Throws</h3>
+            <a href="#">shop now →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured products (hover cards) -->
+    <!-- <section class="featured-products">
+      <h2 class="section-title">Bedding essentials</h2>
+      <div class="product-grid">
+        <div class="product-card">
+          <div class="product-img">
+            <img
+              src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=2158&auto=format&fit=crop"
+              alt="Linen Sheet Set"
+            />
+          </div>
+          <div class="product-info">
+            <h3>Linen sheet set</h3>
+            <div class="product-price">$189</div>
+            <button class="btn-shop">quick add</button>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-img">
+            <img
+              src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?q=80&w=2070&auto=format&fit=crop"
+              alt="Quilted Duvet"
+            />
+          </div>
+          <div class="product-info">
+            <h3>Quilted duvet</h3>
+            <div class="product-price">$249</div>
+            <button class="btn-shop">quick add</button>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-img">
+            <img
+              src="https://images.unsplash.com/photo-1630345411935-6d6a8c6d3b7e?q=80&w=1974&auto=format&fit=crop"
+              alt="Down Pillows"
+            />
+          </div>
+          <div class="product-info">
+            <h3>Down pillows pair</h3>
+            <div class="product-price">$89</div>
+            <button class="btn-shop">quick add</button>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-img">
+            <img
+              src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=2070&auto=format&fit=crop"
+              alt="Woven Throw"
+            />
+          </div>
+          <div class="product-info">
+            <h3>Woven throw</h3>
+            <div class="product-price">$79</div>
+            <button class="btn-shop">quick add</button>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+
+        <section class="category-section">
+      <h2>The Bath Collection</h2>
+
+      <!-- Towels -->
+      <div class="towels-showcase">
+        <div class="towels-text">
+          <h3>Towels · Cloud Drift</h3>
+          <p>
+            Linen-blend towels that become softer with every wash. 700 GSM pure
+            comfort.
+          </p>
+          <a
+            href="../Components/Bath/Towels.html"
+            style="
+              display: inline-block;
+              margin-top: 20px;
+              background: #1f3a3f;
+              color: #fff;
+              padding: 12px 30px;
+              border-radius: 40px 10px 40px 10px;
+              text-decoration: none;
+            "
+            >Explore Towels →</a
+          >
+        </div>
+        <div class="towels-image"></div>
+      </div>
+
+      <!-- Face Towels -->
+      <div class="face-showcase">
+        
+        <div class="face-text">
+          <h3>Face Towels · Finnish Lint</h3>
+          <p>Organic cotton, ultra-soft and hypoallergenic. Set of three.</p>
+          <a
+            href="../Components/Bath/Face Towels.html"
+            style="
+              background: #1f3a3f;
+              color: #fff;
+              padding: 12px 30px;
+              border-radius: 40px 10px 40px 10px;
+              text-decoration: none;
+              display: inline-block;
+              margin-top: 20px;
+            "
+            >View Set</a
+          >
+        </div>
+
+        <div class="face-bubbles">
+          <div class="bubble">
+            <img
+              src="https://cdn.shopify.com/s/files/1/1163/9680/products/TowelSet.jpg?v=1675859997"
+              alt="Face Towel"
+            />
+          </div>
+          <div class="bubble">
+            <img
+              src="https://cdn.shopify.com/s/files/1/1163/9680/products/TowelSet.jpg?v=1675859997"
+              alt="Hand Towel"
+            />
+          </div>
+          <div class="bubble">
+            <img
+              src="https://cdn.shopify.com/s/files/1/1163/9680/products/TowelSet.jpg?v=1675859997"
+              alt="Bath towel"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Hand Towels -->
+      <div class="hand-showcase">
+        <div class="hand-image"></div>
+        <div class="hand-details">
+          <h3>Hand Towels · Knot Weave</h3>
+          <ul class="feature-list">
+            <li>Hemp blend – quick drying</li>
+            <li>Textured weave for grip</li>
+            <li>Naturally antimicrobial</li>
+          </ul>
+          <a
+            href="../Components/Bath/Hand Towels.html"
+            style="
+              background: #1f3a3f;
+              color: #fff;
+              padding: 12px 30px;
+              border-radius: 40px 10px 40px 10px;
+              text-decoration: none;
+              align-self: flex-start;
+            "
+            >Discover</a
+          >
+        </div>
+      </div>
+
+      <!-- Bath Mats -->
+      <div class="mats-showcase">
+        <div class="mats-stack">
+          <div class="mat-layer">
+            <img
+              src="https://cdn.shopify.com/s/files/1/1163/9680/products/TowelSet.jpg?v=1675859997"
+              alt="Mat 1"
+            />
+          </div>
+          <div class="mat-layer">
+            <img
+              src="https://cdn.shopify.com/s/files/1/1163/9680/products/TowelSet.jpg?v=1675859997"
+              alt="Mat 2"
+            />
+          </div>
+          <div class="mat-layer">
+            <img
+              src="https://cdn.shopify.com/s/files/1/1163/9680/products/TowelSet.jpg?v=1675859997"
+              alt="Mat 3"
+            />
+          </div>
+        </div>
+        <div class="mats-text">
+          <h3>Bath Mats · Pebble Shore</h3>
+          <p>
+            Stone-textured microfiber, non-slip, and absorbent. Available in
+            four earth tones.
+          </p>
+          <a
+            href="../Components/Bath/Bath Mats.html"
+            style="
+              background: #1f3a3f;
+              color: #fff;
+              padding: 12px 30px;
+              border-radius: 40px 10px 40px 10px;
+              text-decoration: none;
+              display: inline-block;
+              margin-top: 20px;
+            "
+            >Shop Mats</a
+          >
+        </div>
+      </div>
+
+      <!-- Bath Robes -->
+      <div class="robes-showcase">
+        <div class="robes-hanger">
+          <img
+            src="https://cdn.shopify.com/s/files/1/1163/9680/products/TowelSet.jpg?v=1675859997"
+            alt="Bath Robe"
+          />
+        </div>
+        <div class="robes-text">
+          <h3>Bath Robes · Hygge Wrap</h3>
+          <p>
+            Bamboo robe, lightweight and breathable. Two side pockets, one size
+            fits most.
+          </p>
+          <a
+            href="../Components/Bath/Bath Robes.html"
+            style="
+              background: #1f3a3f;
+              color: #fff;
+              padding: 12px 30px;
+              border-radius: 40px 10px 40px 10px;
+              text-decoration: none;
+              display: inline-block;
+              margin-top: 20px;
+            "
+            >Cozy Up</a
+          >
+        </div>
+      </div>
+    </section>
+    <!-- Material story (split + fabric closeups) -->
+    <section class="material-story">
+      <div class="story-container">
+        <div class="story-text">
+          <h2>Where flax meets <br />craft</h2>
+          <p>
+            Our signature bedding is woven from European flax and extra-long
+            staple cotton. Each piece is stone‑washed for a hand‑feel that only
+            gets better with time.
+          </p>
+          <p>
+            Natural, breathable, and consciously made – we partner with mills
+            that share our respect for the planet.
+          </p>
+          <a href="#" class="story-link">Discover the materials →</a>
+        </div>
+        <div class="story-visual">
+          <div class="fabric-clip">
+            <img
+              src="https://images.unsplash.com/photo-1589310243389-96a5483213a8?q=80&w=1974&auto=format&fit=crop"
+              alt="Linen texture"
+            />
+          </div>
+          <div class="fabric-clip">
+            <img
+              src="https://images.unsplash.com/photo-1600166898405-da9535204843?q=80&w=1974&auto=format&fit=crop"
+              alt="Cotton weave"
+            />
+          </div>
+          <div class="fabric-clip">
+            <img
+              src="https://images.unsplash.com/photo-1598300053652-2be7a03a3a7b?q=80&w=1974&auto=format&fit=crop"
+              alt="Texture close"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Love notes (customers quotes) -->
+    <section class="love-notes">
+      <h2 class="section-title">Whispers from sleepers</h2>
+      <div class="notes-grid">
+        <div class="note">
+          <i>❝</i>
+          <p>
+            “I wake up looking forward to coffee and my linen sheets. They feel
+            like a second skin.”
+          </p>
+          <div class="customer">— Mira K.</div>
+        </div>
+        <div class="note">
+          <i>❝</i>
+          <p>
+            “The duvet is light yet so warm. Minimalist design, maximum
+            comfort.”
+          </p>
+          <div class="customer">— Jonas P.</div>
+        </div>
+        <div class="note">
+          <i>❝</i>
+          <p>
+            “Finally, pillows that don’t go flat after a month. Worth every
+            penny.”
+          </p>
+          <div class="customer">— Samira L.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Soft call to action -->
+    <section class="bedding-cta">
+      <h2>rest & refresh</h2>
+      <p>Complete your bedroom sanctuary with our curated bedding.</p>
+      <a href="#" class="btn">Shop all bedding</a>
+    </section>
+
+    <!-- ========== FOOTER (exactly unchanged) ========== -->
+    <footer>
+      © 2026 <span>Ashley Home Decors</span>. All Rights Reserved.
+    </footer>
+
+    <!-- nav script (unchanged) -->
+    <script src="../../assets/js/nav.js"></script>
+    <script>
+      // minimal fallback for dropdown if nav.js not present
+      window.toggleMenu = window.toggleMenu || function () {};
+      window.toggleDropdown = function (e) {
+        e.preventDefault();
+      };
+    </script>
+  </body>
+</html>

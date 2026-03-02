@@ -1,0 +1,654 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ashley Home · cinematic navigation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+
+
+    <!-- NAV CSS (UNCHANGED) -->
+    <link rel="stylesheet" href="../assets/css/nav.css" />
+    <link rel="stylesheet" href="../assets/css/hero2.css" />
+    <link rel="stylesheet" href="../assets/css/hero.css" />
+    <link rel="stylesheet" href="../assets/css/review.css">
+    <link rel="stylesheet" href="../assets/css/footer.css">
+
+    <!-- PAGE STYLES -->
+    <style>
+      body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        background: #faf8f6;
+        color: #2c2c2c;
+      }
+
+      :root {
+        --bg-main: #e6d9cf;
+        --bg-light: #f4efe9;
+        --text-dark: #3a2f2a;
+        --accent: #9b7e6b;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+   
+      
+      /* ================= ABOUT ================= */
+      .about {
+        padding: 100px 8%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+      }
+
+      .about img {
+        width: 100%;
+        border-radius: 20px;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+      }
+
+      .about h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 2.8rem;
+        margin-bottom: 20px;
+      }
+
+      .about p {
+        line-height: 1.8;
+        color: #555;
+      }
+
+      /* ================= CATEGORIES ================= */
+      .categories {
+        padding: 90px 8%;
+        background: #fff;
+        text-align: center;
+      }
+
+      .categories h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 2.6rem;
+        margin-bottom: 50px;
+      }
+
+      .category-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 30px;
+      }
+
+      .category-card {
+        position: relative;
+        height: 320px;
+        border-radius: 18px;
+        overflow: hidden;
+        cursor: pointer;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .category-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: 0.5s;
+      }
+
+      .category-card:hover img {
+        transform: scale(1.1);
+      }
+
+      .category-card span {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        color: #fff;
+        font-size: 1.4rem;
+        font-weight: 600;
+        text-shadow: 0 5px 20px rgba(0, 0, 0, 0.7);
+      }
+
+      /* ================= HIGHLIGHTS ================= */
+      .highlights {
+        padding: 90px 8%;
+        background: linear-gradient(135deg, #f3ede6, #faf8f6);
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        text-align: center;
+      }
+
+      .highlight-box {
+        padding: 40px;
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        transition: 0.3s;
+      }
+
+      .highlight-box:hover {
+        transform: translateY(-10px);
+      }
+
+      .highlight-box h3 {
+        font-family: "Playfair Display", serif;
+        margin-bottom: 15px;
+      }
+
+      .highlight-box p {
+        color: #666;
+      }
+
+      /* ================= CTA ================= */
+      .cta {
+        padding: 120px 8%;
+        background:
+          linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)),
+          url("https://images.unsplash.com/photo-1618221195710-dd6b41faaea6")
+            center/cover no-repeat;
+        text-align: center;
+        color: #fff;
+      }
+
+      .cta h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 3rem;
+        margin-bottom: 20px;
+      }
+
+      .cta a {
+        display: inline-block;
+        margin-top: 30px;
+        padding: 14px 42px;
+        background: #e7cfa7;
+        color: #2c2c2c;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 30px;
+        transition: 0.3s;
+      }
+
+      .cta a:hover {
+        background: #d8b98c;
+      }
+
+      
+      /* ================= RESPONSIVE ================= */
+      @media (max-width: 900px) {
+        .about {
+          grid-template-columns: 1fr;
+        }
+
+        .hero h1 {
+          font-size: 3rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- NAVBAR (UNCHANGED) -->
+   <nav class="navbar">
+  <div class="logo">
+    <!-- SVG crown logo as image (inline SVG) – now larger -->
+    <img src="../assets/Images/Ashley logo.png"
+         alt="Ashley Crown Logo">
+  </div>
+
+  <div class="menu-toggle" id="menuToggle" onclick="toggleMenu()">☰</div>
+
+  <div class="nav-links" id="navLinks">
+    <a href="../Components/index.html">Home</a>
+    <a href="../Components/about.html">About</a>
+
+    <div class="dropdown">
+      <a href="../Components/Bedding/Bedding.html" onclick="toggleDropdown(event)">Bedding</a>
+      <div class="dropdown-menu">
+        <a href="../Components/Bedding/Bedsheet.html">Bed Sheets</a>
+        <a href="../Components/Bedding/Bed Covers.html">Bed Covers</a>
+        <a href="../Components/Bedding/Blankets.html">Blankets</a>
+        <a href="../Components/Bedding/Dohars.html">Dohars</a>
+        <a href="../Components/Bedding/Pillows.html">Pillows</a>
+        <a href="../Components/Bedding/Pillows Covers.html">Pillows Covers</a>
+        <a href="../Components/Bedding/Quilts.html">Quilts</a>
+        <a href="../Components/Bedding/Mattress Guards.html">Mattress Guards</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <a href="../Components/Bath/bath.html" onclick="toggleDropdown(event)">Bath</a>
+      <div class="dropdown-menu">
+        <a href="../Components/Bath/Towels.html">Towels</a>
+        <a href="../Components/Bath/Face Towels.html">Face Towels</a>
+        <a href="../Components/Bath/Hand Towels.html">Hand Towels</a>
+        <a href="../Components/Bath/Bath Mats.html">Bath Mats</a>
+        <a href="../Components/Bath/Bath Robes.html">Bath Robes</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <a href="../Components/Living/Living.html" onclick="toggleDropdown(event)">Living</a>
+      <div class="dropdown-menu">
+        <a href="../Components/Living/Curtains.html">Curtains</a>
+        <a href="../Components/Living/Carpets.html">Carpets</a>
+        <a href="../Components/Living/Cushion Covers.html">Cushion Covers</a>
+        <a href="../Components/Living/Cushion Fillers.html">Cushion Fillers</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <a href="../Components/Home Accessories/Accessories.html" onclick="toggleDropdown(event)">Home Accessories</a>
+      <div class="dropdown-menu">
+        <a href="../Components/Home Accessories/Dining Accessories.html">Dining Accessories</a>
+        <a href="../Components/Home Accessories/Kids Range.html">Kids Range</a>
+        <a href="../Components/Home Accessories/Decor Items.html">Decor Items</a>
+      </div>
+    </div>
+
+    <a href="../Components/contact.html">Contact</a>
+  </div>
+
+  <a href="../Components/contact.html" class="nav-btn">VISIT STORE</a>
+</nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-wrapper">
+        <!-- LEFT -->
+        <div class="hero-content">
+          <h1>SCANDINAVIAN<br />DESIGN</h1>
+          <p>
+            Minimal interiors inspired by Nordic warmth, natural textures, and
+            timeless comfort for modern living.
+          </p>
+
+          <div class="color-dots">
+            <span class="dot1"></span>
+            <span class="dot2"></span>
+            <span class="dot3"></span>
+            <span class="dot4"></span>
+          </div>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="hero-visual">
+          <div class="main-circle">
+            <img
+              src="https://storyathome.com/cdn/shop/files/1_c5924e32-7f9d-498c-8919-b3672cc1937c.jpg?v=1743588557&width=1946"
+              alt="Scandinavian Living"
+            />
+          </div>
+
+          <div class="small-circle circle-top">
+            <img
+              src="https://5.imimg.com/data5/SELLER/Default/2021/4/OW/CK/VZ/32738871/dijon-ready-made-blackout-curtains-charcoal-500x500.jpg"
+              alt="Minimal Furniture"
+            />
+          </div>
+
+          <div class="small-circle circle-bottom">
+            <img
+              src="https://5.imimg.com/data5/SELLER/Default/2023/10/353945444/IA/EU/OQ/3086702/designer-window-curtain.jpg"
+              alt="Nordic Decor"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+  
+  
+    <!-- CATEGORIES -->
+    <section class="categories">
+      <h2>Our Collections</h2>
+      <div class="category-grid">
+        <div class="category-card">
+          <img
+            src="https://5.imimg.com/data5/SELLER/Default/2023/10/353945444/IA/EU/OQ/3086702/designer-window-curtain.jpg"
+          />
+          <span>Bedding</span>
+        </div>
+        <div class="category-card">
+          <img
+            src="https://5.imimg.com/data5/SELLER/Default/2023/10/353945444/IA/EU/OQ/3086702/designer-window-curtain.jpg"
+          />
+          <span>Bath</span>
+        </div>
+        <div class="category-card">
+          <img
+            src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace"
+          />
+          <span>Living</span>
+        </div>
+        <div class="category-card">
+          <img
+            src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf"
+          />
+          <span>Accessories</span>
+        </div>
+        <div class="category-card">
+          <img
+            src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf"
+          />
+          <span>Accessories</span>
+        </div>
+        <div class="category-card">
+          <img
+            src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf"
+          />
+          <span>Accessories</span>
+        </div>
+        <div class="category-card">
+          <img
+            src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf"
+          />
+          <span>Accessories</span>
+        </div>
+        <div class="category-card">
+          <img
+            src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf"
+          />
+          <span>Accessories</span>
+        </div>
+        <div class="category-card">
+          <img
+            src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf"
+          />
+          <span>Accessories</span>
+        </div>
+        <div class="category-card">
+          <img
+            src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf"
+          />
+          <span>Accessories</span>
+        </div>
+        <div class="category-card">
+          <img
+            src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf"
+          />
+          <span>Accessories</span>
+        </div>
+        <div class="category-card">
+          <img
+            src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf"
+          />
+          <span>Accessories</span>
+        </div>
+        <div class="category-card">
+          <img
+            src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf"
+          />
+          <span>Accessories</span>
+        </div>
+        <div class="category-card">
+          <img
+            src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf"
+          />
+          <span>Accessories</span>
+        </div>
+        <div class="category-card">
+          <img
+            src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf"
+          />
+          <span>Accessories</span>
+        </div>
+        <div class="category-card">
+          <img
+            src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf"
+          />
+          <span>Accessories</span>
+        </div>
+        <div class="category-card">
+          <img
+            src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf"
+          />
+          <span>Accessories</span>
+        </div>
+        <div class="category-card">
+          <img
+            src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf"
+          />
+          <span>Accessories</span>
+        </div>
+        <div class="category-card">
+          <img
+            src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf"
+          />
+          <span>Accessories</span>
+        </div>
+        <div class="category-card">
+          <img
+            src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf"
+          />
+          <span>Accessories</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- HIGHLIGHTS -->
+    <section class="highlights">
+      <div class="highlight-box">
+        <h3>Premium Quality</h3>
+        <p>Hand-picked fabrics and superior craftsmanship.</p>
+      </div>
+      <div class="highlight-box">
+        <h3>Elegant Designs</h3>
+        <p>Modern, timeless styles for every home.</p>
+      </div>
+      <div class="highlight-box">
+        <h3>Trusted Comfort</h3>
+        <p>Designed for beauty, built for durability.</p>
+      </div>
+    </section>
+
+      <!-- NO BODY STYLES – only the review section with transparent left card & colorful border -->
+  <section class="review-wrapper">
+    <div class="review-container">
+
+      <!-- LEFT RATING BOX – now see‑through, colorful border pops -->
+      <div class="google-rating-box">
+        <div class="google-logo">
+          <span>G</span><span>o</span><span>o</span>
+          <span>g</span><span>l</span><span>e</span>
+        </div>
+        <div class="avg-text">Average rating</div>
+        <div class="rating-number">4.4</div>
+
+        <div class="stars">
+          <span class="star-yellow">★</span>
+          <span class="star-yellow">★</span>
+          <span class="star-yellow">★</span>
+          <span class="star-yellow">★</span>
+          <span class="star-gray">★</span>
+        </div>
+
+        <div class="review-count">Based on 41 Reviews</div>
+        <button class="write-btn">Write Reviews</button>
+      </div>
+
+      <!-- RIGHT REVIEW LIST (unchanged) -->
+      <div class="review-list">
+
+        <div class="single-review">
+          <div class="review-date">25-12-2025</div>
+          <div class="review-text">
+            Had a great experience at the Portico Exclusive Store in HSR Layout. The store has a premium collection of bedsheets and home linen with excellent quality.
+          </div>
+        </div>
+
+        <div class="single-review">
+          <div class="review-header">
+            <div class="google-small"></div>
+            <div class="reviewer-name">Zakirhussain Ganihar</div>
+            <div class="review-stars">★★★★★</div>
+          </div>
+          <div class="review-date">22-12-2025</div>
+          <div class="review-text">
+            ★★★★★ “Loved the collection at Portico Linen. Excellent quality products that truly feel luxurious. Staff explained features properly.”
+          </div>
+        </div>
+
+        <div class="single-review">
+          <div class="review-header">
+            <div class="google-small"></div>
+            <div class="reviewer-name">Ravi NJ</div>
+            <div class="review-stars">★★★★★</div>
+          </div>
+          <div class="review-date">22-12-2025</div>
+          <div class="review-text">
+            ★★★★★ “Excellent quality bedding and home linen at Portico! The bedsheets are soft, stylish, and very durable.”
+          </div>
+        </div>
+
+        <div class="single-review">
+          <div class="review-header">
+            <div class="google-small"></div>
+            <div class="reviewer-name">LAUKAI BOY</div>
+            <div class="review-stars">★★★★★</div>
+          </div>
+          <div class="review-date">20-12-2025</div>
+          <div class="review-text">
+            ★★★★★ “Portico Linen Store offers premium products at good value. The fabric quality is outstanding and designs are elegant.”
+          </div>
+        </div>
+
+      </div> <!-- end review-list -->
+    </div> <!-- end review-container -->
+  </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <h2>Bring Elegance Home</h2>
+      <p>Discover collections that redefine comfort and luxury.</p>
+      <a href="#">Visit Our Store</a>
+    </section>
+
+    <!-- FOOTER -->
+  
+ <!-- the complete light‑theme footer -->
+  <footer>
+    <!-- floating shapes -->
+    <div class="shape"></div>
+    <div class="shape shape2"></div>
+
+    <!-- home decor icons floating (light version) -->
+    <div class="decor-icon decor-icon-1"><i class="fa-solid fa-lamp"></i></div>
+    <div class="decor-icon decor-icon-2"><i class="fa-solid fa-couch"></i></div>
+    <div class="decor-icon decor-icon-3"><i class="fa-solid fa-vase"></i></div>
+    <div class="decor-icon decor-icon-4"><i class="fa-solid fa-chair"></i></div>
+    <div class="decor-icon decor-icon-5"><i class="fa-solid fa-clock"></i></div>
+
+    <!-- sparkle particles (20 pieces) -->
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div>
+
+    <div class="footer-content">
+      <!-- decor ticker -->
+      <div class="decor-ticker">
+        <div class="ticker-content">
+          <span>✨ HANDCRAFTED</span> <i class="fa-regular fa-star"></i>
+          <span>SCANDINAVIAN</span> <i class="fa-regular fa-star"></i>
+          <span>MINIMALIST</span> <i class="fa-regular fa-star"></i>
+          <span>LUXURY</span> <i class="fa-regular fa-star"></i>
+          <span>ORGANIC</span> <i class="fa-regular fa-star"></i>
+          <span>TIMELESS</span> <i class="fa-regular fa-star"></i>
+          <!-- duplicate for seamless loop -->
+          <span>✨ HANDCRAFTED</span> <i class="fa-regular fa-star"></i>
+          <span>SCANDINAVIAN</span> <i class="fa-regular fa-star"></i>
+          <span>MINIMALIST</span> <i class="fa-regular fa-star"></i>
+          <span>LUXURY</span> <i class="fa-regular fa-star"></i>
+          <span>ORGANIC</span> <i class="fa-regular fa-star"></i>
+          <span>TIMELESS</span> <i class="fa-regular fa-star"></i>
+        </div>
+      </div>
+
+      <!-- main grid -->
+      <div class="footer-grid">
+        <!-- BRAND -->
+        <div class="footer-brand">
+          <h2>Ashley <span>Home Decors</span></h2>
+          <p>
+            Curating timeless interiors with a perfect blend of elegance,
+            craftsmanship, and modern luxury. Transforming houses into
+            beautiful homes.
+          </p>
+        </div>
+
+        <!-- EXPLORE -->
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Collections</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- SERVICES -->
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#">Interior Design</a></li>
+            <li><a href="#">Custom Furniture</a></li>
+            <li><a href="#">Home Styling</a></li>
+            <li><a href="#">Renovation</a></li>
+          </ul>
+        </div>
+
+        <!-- CONTACT -->
+        <div class="footer-col footer-contact">
+          <h4>Get In Touch</h4>
+          <p><i class="fa-solid fa-location-dot"></i> Chennai, Tamil Nadu</p>
+          <p><i class="fa-solid fa-phone"></i> +91 98765 43210</p>
+          <p><i class="fa-solid fa-envelope"></i> info@ashleyhomedecors.com</p>
+
+          <div class="footer-social">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-pinterest-p"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ribbon divider -->
+      <div class="footer-divider"></div>
+
+      <!-- copyright -->
+      <div class="footer-bottom">
+        © 2026 Ashley Home Decors. Crafted with elegance ✨
+      </div>
+    </div>
+
+    <!-- back to top button -->
+    <div class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'});">
+      <i class="fa-solid fa-arrow-up"></i>
+    </div>
+  </footer>
+
+    <script src="../assets/js/nav.js"></script>
+  </body>
+</html>

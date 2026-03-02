@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Creative Animated Stats · Glassmorphism + 3D Tilt</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at 30% 10%, #1a2a3a, #0b1219);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* ----- Floating Particles Background (Canvas) ----- */
+    #particle-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* ----- Stats Section ----- */
+    .stats-section {
+      width: 100%;
+      padding: 90px 6%;
+      position: relative;
+      z-index: 2;
+    }
+
+    .stats-container {
+      max-width: 1400px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 30px;
+    }
+
+    /* ----- Glass Card with 3D Tilt ----- */
+    .stat-box {
+      position: relative;
+      padding: 50px 25px;
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(18px) saturate(180%);
+      -webkit-backdrop-filter: blur(18px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      text-align: center;
+      overflow: hidden;
+      transition: transform 0.2s ease-out;
+      transform-style: preserve-3d;
+      perspective: 1200px;
+      cursor: default;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 2px rgba(255, 255, 255, 0.03) inset;
+      animation: floatIn 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+      opacity: 0;
+    }
+
+    .stat-box:nth-child(1) { animation-delay: 0.1s; }
+    .stat-box:nth-child(2) { animation-delay: 0.2s; }
+    .stat-box:nth-child(3) { animation-delay: 0.3s; }
+    .stat-box:nth-child(4) { animation-delay: 0.4s; }
+    .stat-box:nth-child(5) { animation-delay: 0.5s; }
+
+    @keyframes floatIn {
+      0% { opacity: 0; transform: translateY(40px) scale(0.9); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* Animated gradient border (runs continuously) */
+    .stat-box::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      background: linear-gradient(115deg, #ff6a00, #ee0979, #00c6ff, #ffd700, #ff6a00);
+      background-size: 400% 400%;
+      border-radius: 32px;
+      opacity: 0;
+      transition: opacity 0.4s;
+      z-index: -1;
+      animation: borderRotate 6s linear infinite;
+    }
+
+    .stat-box:hover::before {
+      opacity: 1;
+    }
+
+    @keyframes borderRotate {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Icon with continuous playful animation */
+    .stat-icon {
+      font-size: 52px;
+      margin-bottom: 25px;
+      background: linear-gradient(135deg, #ffd700, #ff7e5f, #feb47b);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.5));
+      animation: iconWobble 4s infinite ease-in-out;
+      display: inline-block;
+    }
+
+    @keyframes iconWobble {
+      0%, 100% { transform: rotate(0deg) scale(1); }
+      25% { transform: rotate(8deg) scale(1.1); }
+      50% { transform: rotate(-8deg) scale(1.1); }
+      75% { transform: rotate(4deg) scale(1.05); }
+    }
+
+    /* Number style – gradient text */
+    .stat-number {
+      font-size: 72px;
+      font-weight: 700;
+      line-height: 1;
+      background: linear-gradient(120deg, #fff8e7, #ffd966, #ffb347);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 30px rgba(255, 200, 50, 0.3);
+      letter-spacing: 2px;
+    }
+
+    /* Label */
+    .stat-label {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.9);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      line-height: 1.4;
+    }
+
+    /* small percentage or plus sign inline */
+    .stat-number[data-suffix]::after {
+      content: attr(data-suffix);
+      font-size: 0.5em;
+      vertical-align: super;
+      margin-left: 4px;
+    }
+
+    /* additional hover lift and glow */
+    .stat-box:hover {
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 40px 60px rgba(0, 0, 0, 0.6), 0 0 0 2px rgba(255, 255, 255, 0.2) inset;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    /* Responsive grid */
+    @media (max-width: 1200px) {
+      .stats-container {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .stat-number {
+        font-size: 60px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .stats-container {
+        grid-template-columns: 1fr;
+      }
+      .stat-box {
+        padding: 40px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Particle Canvas Background -->
+  <canvas id="particle-canvas"></canvas>
+
+  <section class="stats-section">
+    <div class="stats-container">
+
+      <!-- 1. Projects Completed -->
+      <div class="stat-box" data-tilt>
+        <div class="stat-icon"><i class="fa-solid fa-briefcase"></i></div>
+        <div class="stat-number" id="counter1" data-target="4500" data-suffix="+">0</div>
+        <div class="stat-label">Projects<br>Completed</div>
+      </div>
+
+      <!-- 2. Happy Customers -->
+      <div class="stat-box" data-tilt>
+        <div class="stat-icon"><i class="fa-solid fa-smile-beam"></i></div>
+        <div class="stat-number" id="counter2" data-target="2000" data-suffix="+">0</div>
+        <div class="stat-label">Happy<br>Customers</div>
+      </div>
+
+      <!-- 3. Years of Experience -->
+      <div class="stat-box" data-tilt>
+        <div class="stat-icon"><i class="fa-solid fa-calendar-check"></i></div>
+        <div class="stat-number" id="counter3" data-target="42" data-suffix="">0</div>
+        <div class="stat-label">Years<br>Experience</div>
+      </div>
+
+      <!-- 4. Customer Satisfaction (percentage) -->
+      <div class="stat-box" data-tilt>
+        <div class="stat-icon"><i class="fa-solid fa-thumbs-up"></i></div>
+        <div class="stat-number" id="counter4" data-target="100" data-suffix="%">0</div>
+        <div class="stat-label">Customer<br>Satisfaction</div>
+      </div>
+
+      <!-- 5. Social Rating (static, but animated) -->
+      <div class="stat-box" data-tilt>
+        <div class="stat-icon"><i class="fa-solid fa-star"></i></div>
+        <div class="stat-number" id="counter5" data-target="5" data-suffix="★">0</div>
+        <div class="stat-label">Rated On<br>Social Media</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- JavaScript: Particle Background, Scroll-triggered Counters, 3D Tilt -->
+  <script>
+    (function() {
+      // ==================== PARTICLES BACKGROUND ====================
+      const canvas = document.getElementById('particle-canvas');
+      const ctx = canvas.getContext('2d');
+      let width, height;
+      let particles = [];
+
+      function initParticles() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+
+        const particleCount = 100;
+        particles = [];
+        for (let i = 0; i < particleCount; i++) {
+          particles.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            radius: Math.random() * 2 + 1,
+            speedX: (Math.random() - 0.5) * 0.4,
+            speedY: (Math.random() - 0.5) * 0.4,
+            color: `rgba(255, 215, 0, ${Math.random() * 0.3 + 0.2})`
+          });
+        }
+      }
+
+      function drawParticles() {
+        ctx.clearRect(0, 0, width, height);
+        particles.forEach(p => {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = p.color;
+          ctx.fill();
+          // move
+          p.x += p.speedX;
+          p.y += p.speedY;
+          // wrap around edges
+          if (p.x < 0) p.x = width;
+          if (p.x > width) p.x = 0;
+          if (p.y < 0) p.y = height;
+          if (p.y > height) p.y = 0;
+        });
+        requestAnimationFrame(drawParticles);
+      }
+
+      window.addEventListener('resize', () => {
+        initParticles();
+      });
+
+      initParticles();
+      drawParticles();
+
+      // ==================== SCROLL-TRIGGERED COUNTERS ====================
+      const counters = [
+        { element: document.getElementById('counter1'), target: 4500, current: 0, suffix: '+' },
+        { element: document.getElementById('counter2'), target: 2000, current: 0, suffix: '+' },
+        { element: document.getElementById('counter3'), target: 42, current: 0, suffix: '' },
+        { element: document.getElementById('counter4'), target: 100, current: 0, suffix: '%' },
+        { element: document.getElementById('counter5'), target: 5, current: 0, suffix: '★' }
+      ];
+
+      // Set initial display
+      counters.forEach(c => {
+        c.element.innerText = '0' + (c.suffix ? c.suffix : '');
+      });
+
+      // Intersection Observer to start counting when visible
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const index = Array.from(document.querySelectorAll('.stat-number')).indexOf(entry.target);
+            if (index !== -1) {
+              startCounter(counters[index]);
+            }
+            obs.unobserve(entry.target); // only once
+          }
+        });
+      }, { threshold: 0.3 });
+
+      counters.forEach(c => observer.observe(c.element));
+
+      function startCounter(counter) {
+        let target = counter.target;
+        let current = 0;
+        let suffix = counter.suffix || '';
+        let step = target / 80; // increment per frame
+
+        function update() {
+          current += step;
+          if (current < target) {
+            counter.element.innerText = Math.floor(current) + suffix;
+            requestAnimationFrame(update);
+          } else {
+            counter.element.innerText = target + suffix;
+          }
+        }
+        update();
+      }
+
+      // ==================== 3D TILT EFFECT ON MOUSE MOVE ====================
+      const boxes = document.querySelectorAll('[data-tilt]');
+      boxes.forEach(box => {
+        box.addEventListener('mousemove', (e) => {
+          const rect = box.getBoundingClientRect();
+          const x = e.clientX - rect.left; // x pos within element
+          const y = e.clientY - rect.top; // y pos within element
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const rotateX = ((y - centerY) / centerY) * -8; // max 8deg
+          const rotateY = ((x - centerX) / centerX) * 8;
+          box.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px) scale(1.02)`;
+        });
+
+        box.addEventListener('mouseleave', () => {
+          box.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0) scale(1)';
+        });
+      });
+
+    })();
+  </script>
+
+</body>
+</html>

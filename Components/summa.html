@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ashley Home Decors – Royal Palace Navbar</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ROYAL FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- FONT AWESOME -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+:root{
+  --gold:#c9a24d;
+  --dark:#0b0b0b;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  background:radial-gradient(circle at top,#1a1a1a,#000);
+  font-family:'Montserrat',sans-serif;
+  color:#fff;
+}
+
+/* ================= NAVBAR ================= */
+.navbar{
+  position:fixed;
+  top:0;
+  width:100%;
+  padding:14px 60px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:linear-gradient(to bottom,rgba(0,0,0,.85),rgba(0,0,0,.35));
+  backdrop-filter:blur(14px);
+  z-index:999;
+  animation:drop 1.2s ease;
+}
+
+@keyframes drop{
+  from{opacity:0;transform:translateY(-60px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* LOGO + CROWN */
+.logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.logo img{
+  height:70px;
+  filter:drop-shadow(0 0 8px rgba(201,162,77,.4));
+}
+
+.crown{
+  font-size:22px;
+  color:var(--gold);
+  animation:crownGlow 3s infinite alternate;
+}
+
+@keyframes crownGlow{
+  from{filter:drop-shadow(0 0 4px var(--gold))}
+  to{filter:drop-shadow(0 0 14px var(--gold))}
+}
+
+/* NAV LINKS */
+.nav-links{
+  display:flex;
+  gap:36px;
+  align-items:center;
+}
+
+.nav-links>a,.dropdown>a{
+  font-family:'Cinzel Decorative',serif;
+  font-size:14px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:#ddd;
+  text-decoration:none;
+  position:relative;
+  transition:.6s ease;
+}
+
+.nav-links i{color:var(--gold)}
+
+.nav-links>a::after,.dropdown>a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-8px;
+  width:0%;
+  height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  transition:.8s ease;
+}
+
+.nav-links>a:hover,.dropdown>a:hover{
+  color:#fff;
+  text-shadow:0 0 8px rgba(201,162,77,.6);
+}
+
+.nav-links>a:hover::after,.dropdown>a:hover::after{
+  width:100%;
+}
+
+/* ================= MEGA DROPDOWN ================= */
+.dropdown{position:relative}
+
+.mega-menu{
+  position:absolute;
+  top:55px;
+  left:0;
+  width:700px;
+  background:rgba(0,0,0,.95);
+  backdrop-filter:blur(18px);
+  border:1px solid rgba(201,162,77,.25);
+  padding:28px;
+  display:none;
+  grid-template-columns:repeat(3,1fr);
+  gap:25px;
+  animation:megaFade .6s ease;
+}
+
+@keyframes megaFade{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.dropdown:hover .mega-menu{display:grid}
+
+.mega-menu h4{
+  font-family:'Cinzel',serif;
+  color:var(--gold);
+  margin-bottom:12px;
+  letter-spacing:1px;
+}
+
+.mega-menu a{
+  display:block;
+  padding:6px 0;
+  color:#ccc;
+  font-size:14px;
+  text-decoration:none;
+  transition:.4s ease;
+}
+
+.mega-menu a:hover{
+  color:var(--gold);
+  padding-left:6px;
+}
+
+/* CTA */
+.nav-btn{
+  font-family:'Cinzel Decorative',serif;
+  padding:10px 24px;
+  border:1px solid var(--gold);
+  color:var(--gold);
+  text-decoration:none;
+  letter-spacing:2px;
+  transition:.6s ease;
+}
+
+.nav-btn:hover{
+  background:var(--gold);
+  color:#000;
+  box-shadow:0 0 25px rgba(201,162,77,.6);
+}
+
+/* HERO */
+.hero{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.hero h1{
+  font-family:'Cinzel Decorative',serif;
+  font-size:58px;
+  letter-spacing:3px;
+}
+
+.hero span{color:var(--gold)}
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+
+  <div class="logo">
+    <!-- <i class="fa-solid fa-crown crown"></i> -->
+    <img src="../assets/Images/LOGO.png" alt="Ashley Home Decors">
+  </div>
+
+  <div class="nav-links">
+
+    <a href="#"><i class="fa-solid fa-house"></i>Home</a>
+    <a href="#"><i class="fa-solid fa-circle-info"></i>About</a>
+
+    <!-- BEDDING -->
+    <div class="dropdown">
+      <a href="#"><i class="fa-solid fa-bed"></i>Bedding</a>
+      <div class="mega-menu">
+        <div>
+          <h4>Bedding Range</h4>
+          <a>Bed Sheets</a>
+          <a>Bed Covers</a>
+          <a>Comforters</a>
+          <a>Quilts</a>
+        </div>
+        <div>
+          <h4>Sleep Essentials</h4>
+          <a>Pillows</a>
+          <a>Cushion Covers</a>
+          <a>Mattress Protectors</a>
+        </div>
+        <div>
+          <h4>Luxury</h4>
+          <a>Premium Sets</a>
+          <a>Hotel Collection</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- BATH -->
+    <div class="dropdown">
+      <a href="#"><i class="fa-solid fa-bath"></i>Bath</a>
+      <div class="mega-menu">
+        <div>
+          <h4>Towels</h4>
+          <a>Bath Towels</a>
+          <a>Hand Towels</a>
+          <a>Face Towels</a>
+        </div>
+        <div>
+          <h4>Essentials</h4>
+          <a>Bath Mats</a>
+          <a>Bath Robes</a>
+        </div>
+        <div>
+          <h4>Decor</h4>
+          <a>Shower Curtains</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- LIVING -->
+    <div class="dropdown">
+      <a href="#"><i class="fa-solid fa-couch"></i>Living</a>
+      <div class="mega-menu">
+        <div>
+          <h4>Furnishings</h4>
+          <a>Curtains</a>
+          <a>Rugs</a>
+          <a>Carpets</a>
+        </div>
+        <div>
+          <h4>Comfort</h4>
+          <a>Sofa Throws</a>
+          <a>Cushion Fillers</a>
+        </div>
+        <div>
+          <h4>Floor</h4>
+          <a>Floor Mats</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ACCESSORIES -->
+    <div class="dropdown">
+      <a href="#"><i class="fa-solid fa-gem"></i>Accessories</a>
+      <div class="mega-menu">
+        <div>
+          <h4>Decor</h4>
+          <a>Wall Decor</a>
+          <a>Table Decor</a>
+          <a>Festive Decor</a>
+        </div>
+        <div>
+          <h4>Dining</h4>
+          <a>Dining Accessories</a>
+          <a>Serveware</a>
+        </div>
+        <div>
+          <h4>Others</h4>
+          <a>Kids Range</a>
+          <a>Storage Baskets</a>
+        </div>
+      </div>
+    </div>
+
+    <a href="#"><i class="fa-solid fa-phone"></i>Contact</a>
+  </div>
+
+  <a href="#" class="nav-btn"><i class="fa-solid fa-store"></i> VISIT STORE</a>
+
+</nav>
+
+<section class="hero">
+  <h1>Design Your <span>Dream Home</span></h1>
+</section>
+
+</body>
+</html>

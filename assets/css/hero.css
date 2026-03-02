@@ -1,0 +1,130 @@
+ /* HERO */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #efe6de, #e2d4c7);
+      }
+
+      .hero-wrapper {
+        max-width: 1200px;
+        width: 90%;
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        align-items: center;
+        gap: 60px;
+      }
+
+      /* LEFT CONTENT */
+      .hero-content h1 {
+        font-family: "Playfair Display", serif;
+        font-size: 64px;
+        letter-spacing: 2px;
+        color: var(--text-dark);
+        line-height: 1.2;
+      }
+
+      .hero-content p {
+        margin: 25px 0;
+        max-width: 420px;
+        color: #5c4b42;
+        font-size: 16px;
+      }
+
+      .color-dots {
+        display: flex;
+        gap: 12px;
+        margin-top: 30px;
+      }
+
+      .color-dots span {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        display: inline-block;
+      }
+
+      .dot1 {
+        background: #cbb7a6;
+      }
+      .dot2 {
+        background: #9b7e6b;
+      }
+      .dot3 {
+        background: #6b4e3d;
+      }
+      .dot4 {
+        background: #3a2f2a;
+      }
+
+      /* RIGHT IMAGES */
+      .hero-visual {
+        position: relative;
+      }
+
+      .main-circle {
+        width: 560px;
+        height: 560px;
+        border-radius: 50%;
+        overflow: hidden;
+        background: #fff;
+        box-shadow: 0 40px 80px rgba(0, 0, 0, 0.08);
+      }
+
+      .main-circle img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .small-circle {
+        position: absolute;
+        width: 280px;
+        height: 280px;
+        border-radius: 50%;
+        overflow: hidden;
+        background: #fff;
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+      }
+
+      .circle-top {
+        top: -70px;
+        right: -70px;
+      }
+
+      .circle-bottom {
+        bottom: -60px;
+        left: -60px;
+      }
+
+      .small-circle img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 900px) {
+        .hero-wrapper {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+
+        .hero-content h1 {
+          font-size: 48px;
+        }
+
+        .hero-content p {
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .color-dots {
+          justify-content: center;
+        }
+
+        .hero-visual {
+          margin-top: 50px;
+        }
+      }
