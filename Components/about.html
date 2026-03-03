@@ -1231,7 +1231,7 @@
         </div>
         <div class="mosaic-item">
           <img
-            src="https://images.unsplash.com/photo-1584102272778-5f6d4508a2d5?q=80&w=1974&auto=format&fit=crop"
+            src="https://cdn.shopify.com/s/files/1/1163/9680/products/TowelSet.jpg?v=1675859997"
             alt="Bath towels"
           />
           <div class="mosaic-overlay">
@@ -1345,6 +1345,52 @@
     <script src="../assets/js/nav.js"></script>
     <!-- remaining non‑nav animations (stats, timeline, meter) -->
     <script>
+
+       (function() {
+    const toggleBtn = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    const dropdowns = document.querySelectorAll('.dropdown');
+
+    // Toggle main menu
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        navLinks.classList.toggle('active');
+      });
+    }
+
+    // Mobile dropdown toggles (click on .dropdown > a)
+    dropdowns.forEach(drop => {
+      const link = drop.querySelector('a:first-child');
+      link.addEventListener('click', function(e) {
+        // only for mobile width (≤1000px)
+        if (window.innerWidth <= 1000) {
+          e.preventDefault();
+          drop.classList.toggle('active');
+        }
+      });
+    });
+
+    // optional: close menu when clicking outside (improves UX)
+    document.addEventListener('click', function(e) {
+      if (window.innerWidth <= 1000) {
+        if (!navLinks.contains(e.target) && !toggleBtn.contains(e.target)) {
+          navLinks.classList.remove('active');
+          // also close dropdowns if needed (optional)
+          dropdowns.forEach(d => d.classList.remove('active'));
+        }
+      }
+    });
+
+    // on resize >1000, remove active classes to avoid leftover styles
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 1000) {
+        navLinks.classList.remove('active');
+        dropdowns.forEach(d => d.classList.remove('active'));
+      }
+    });
+  })();
+
       (function () {
         // stats counters (unchanged)
         const statNumbers = document.querySelectorAll(".stat-number");
